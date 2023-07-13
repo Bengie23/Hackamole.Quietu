@@ -1,4 +1,3 @@
-using hackamole.quietu.SharedKernel.Commands;
 using hackamole.quietu.SharedKernel.Interfaces.Commands;
 
 namespace hackamole.quietu.domain.Commands;
