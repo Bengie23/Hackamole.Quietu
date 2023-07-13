@@ -6,6 +6,6 @@ public class AuthorizeCommandHandler : ICommandHandler<AuthorizeCommand>
 {
     public void Handle(AuthorizeCommand command)
     {
-        throw new NotImplementedException();
+        Console.WriteLine("CommandExecuted");
     }
 }
