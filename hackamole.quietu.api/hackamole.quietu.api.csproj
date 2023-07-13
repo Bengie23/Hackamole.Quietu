@@ -11,11 +11,22 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.9" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.4" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.32.0" />
   </ItemGroup>
 
   <ItemGroup>
-  <ProjectReference Include="..\hackamole.quietu.sharedkernel\hackamole.quietu.sharedkernel.csproj" />
-  <ProjectReference Include="..\hackamole.quietu.domain\hackamole.quietu.domain.csproj" />
-</ItemGroup>
-
+    <ProjectReference Include="..\hackamole.quietu.sharedkernel\hackamole.quietu.sharedkernel.csproj" />
+    <ProjectReference Include="..\hackamole.quietu.domain\hackamole.quietu.domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Models\" />
+    <None Remove="Authorization\" />
+    <None Remove="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Authorization\" />
+    <Folder Include="Data\" />
+  </ItemGroup>
 </Project>

@@ -1,3 +1,6 @@
+using Hackamole.Quietu.Api.Authorization;
+using Hackamole.Quietu.Api.Models;
+
 using System.Reflection;
 using hackamole.quietu.domain.Commands;
 using hackamole.quietu.SharedKernel.Interfaces.Commands;
@@ -8,7 +11,12 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        // Add services to the container.
+JWTManagerOptions jwtManagerOptions = new JWTManagerOptions();
+builder.Configuration.GetSection(nameof(JWTManagerOptions)).Bind(jwtManagerOptions);
+builder.Services.AddSingleton<JWTManagerOptions>(jwtManagerOptions);
+// Add services to the container.
+
+builder.Services.AddTransient<IJWTManager, JWTManager>();
 
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

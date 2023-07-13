@@ -11,10 +11,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Entities\" />
+    <None Remove="Entities\Projections\" />
     <None Remove="Events\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Events\" />
+    <None Remove="Entities\Projections\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Events\" />
+    <Folder Include="Entities\Projections\" />
   </ItemGroup>
 </Project>
