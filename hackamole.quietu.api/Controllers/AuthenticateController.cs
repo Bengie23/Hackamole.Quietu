@@ -9,11 +9,11 @@ namespace Hackamole.Quietu.Api.Controllers
     [ApiController]
     [Authorize]
     [Route("api/[controller]")]
-    public class HandShakeController : ControllerBase
+    public class AuthenticateController : ControllerBase
 	{
         private readonly IJWTManager jwtManager;
 
-        public HandShakeController(IJWTManager jWTManager)
+        public AuthenticateController(IJWTManager jWTManager)
 		{
             this.jwtManager = jWTManager;
 

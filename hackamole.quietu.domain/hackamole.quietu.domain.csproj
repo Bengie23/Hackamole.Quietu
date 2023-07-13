@@ -11,8 +11,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Entities\" />
+    <None Remove="Entities\Projections\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
+    <Folder Include="Entities\Projections\" />
   </ItemGroup>
 </Project>

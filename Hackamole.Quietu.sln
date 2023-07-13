@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackamole.Quietu.Domain", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "hackamole.quietu.api", "hackamole.quietu.api\hackamole.quietu.api.csproj", "{06513CAA-3931-4CAB-8756-550F41788086}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackamole.Quietu.Data", "Hackamole.Quietu.Data\Hackamole.Quietu.Data.csproj", "{C1BC4AF3-854F-4466-B3C5-9459F8E32B54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,5 +36,9 @@ Global
 		{06513CAA-3931-4CAB-8756-550F41788086}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06513CAA-3931-4CAB-8756-550F41788086}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06513CAA-3931-4CAB-8756-550F41788086}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1BC4AF3-854F-4466-B3C5-9459F8E32B54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1BC4AF3-854F-4466-B3C5-9459F8E32B54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1BC4AF3-854F-4466-B3C5-9459F8E32B54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1BC4AF3-854F-4466-B3C5-9459F8E32B54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
