@@ -5,6 +5,10 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackamole.Quietu.Api", "hackamole.quietu.api\Hackamole.Quietu.Api.csproj", "{1119E262-63B5-4ACB-A4F0-171DD7A9DDB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackamole.Quietu.SharedKernel", "hackamole.quietu.sharedkernel\Hackamole.Quietu.SharedKernel.csproj", "{AC3D238A-FF06-425E-8955-F703BA41C7C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackamole.Quietu.Domain", "hackamole.quietu.Domain\Hackamole.Quietu.Domain.csproj", "{476B8E15-CBE7-4734-97A7-6B7A92738D76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{1119E262-63B5-4ACB-A4F0-171DD7A9DDB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1119E262-63B5-4ACB-A4F0-171DD7A9DDB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1119E262-63B5-4ACB-A4F0-171DD7A9DDB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC3D238A-FF06-425E-8955-F703BA41C7C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC3D238A-FF06-425E-8955-F703BA41C7C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC3D238A-FF06-425E-8955-F703BA41C7C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC3D238A-FF06-425E-8955-F703BA41C7C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{476B8E15-CBE7-4734-97A7-6B7A92738D76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{476B8E15-CBE7-4734-97A7-6B7A92738D76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{476B8E15-CBE7-4734-97A7-6B7A92738D76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{476B8E15-CBE7-4734-97A7-6B7A92738D76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

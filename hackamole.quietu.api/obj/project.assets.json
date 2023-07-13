@@ -107,6 +107,29 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "Hackamole.Quietu.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Hackamole.Quietu.SharedKernel": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Hackamole.Quietu.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hackamole.Quietu.Domain.dll": {}
+        }
+      },
+      "Hackamole.Quietu.SharedKernel/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Hackamole.Quietu.SharedKernel.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Hackamole.Quietu.SharedKernel.dll": {}
+        }
       }
     }
   },
@@ -460,10 +483,22 @@
         "swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "Hackamole.Quietu.Domain/1.0.0": {
+      "type": "project",
+      "path": "../hackamole.quietu.Domain/Hackamole.Quietu.Domain.csproj",
+      "msbuildProject": "../hackamole.quietu.Domain/Hackamole.Quietu.Domain.csproj"
+    },
+    "Hackamole.Quietu.SharedKernel/1.0.0": {
+      "type": "project",
+      "path": "../hackamole.quietu.sharedkernel/Hackamole.Quietu.SharedKernel.csproj",
+      "msbuildProject": "../hackamole.quietu.sharedkernel/Hackamole.Quietu.SharedKernel.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
+      "Hackamole.Quietu.Domain >= 1.0.0",
+      "Hackamole.Quietu.SharedKernel >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 7.0.9",
       "Swashbuckle.AspNetCore >= 6.5.0"
     ]
@@ -474,9 +509,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.api/hackamole.quietu.api.csproj",
-      "projectName": "hackamole.quietu.api",
-      "projectPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.api/hackamole.quietu.api.csproj",
+      "projectUniqueName": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.api/Hackamole.Quietu.Api.csproj",
+      "projectName": "Hackamole.Quietu.Api",
+      "projectPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.api/Hackamole.Quietu.Api.csproj",
       "packagesPath": "/Users/lalozadalopez/.nuget/packages/",
       "outputPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.api/obj/",
       "projectStyle": "PackageReference",
@@ -493,7 +528,14 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.Domain/Hackamole.Quietu.Domain.csproj": {
+              "projectPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.Domain/Hackamole.Quietu.Domain.csproj"
+            },
+            "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.sharedkernel/Hackamole.Quietu.SharedKernel.csproj": {
+              "projectPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.sharedkernel/Hackamole.Quietu.SharedKernel.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

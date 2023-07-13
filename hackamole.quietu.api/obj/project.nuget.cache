@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/6BXkWEkp7Ru33eCV55OyJbYBMjdNf64jDNThsP2WBpcx8WMwM1r2PeDpJ+LDCvR6uXftADJutLOyGRTPzknxA==",
+  "dgSpecHash": "kRfhbzsFaweovuqEXA2PPbGBGX6mcDXXy8XQWSdajeRPjwQrr4duQwJo8IL3ue/hvsLIJJmOBr2EtR7gANUMGA==",
   "success": true,
-  "projectFilePath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.api/hackamole.quietu.api.csproj",
+  "projectFilePath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.api/Hackamole.Quietu.Api.csproj",
   "expectedPackageFiles": [
     "/Users/lalozadalopez/.nuget/packages/microsoft.aspnetcore.openapi/7.0.9/microsoft.aspnetcore.openapi.7.0.9.nupkg.sha512",
     "/Users/lalozadalopez/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
