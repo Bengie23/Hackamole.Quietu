@@ -232,3 +232,6 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+hackamole.quietu.api/obj/project.nuget.cache
+hackamole.quietu.api/obj/project.nuget.cache
+hackamole.quietu.api/obj/project.nuget.cache
