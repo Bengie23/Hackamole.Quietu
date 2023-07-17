@@ -22,17 +22,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\hackamole.quietu.sharedkernel\hackamole.quietu.sharedkernel.csproj" />
-    <ProjectReference Include="..\hackamole.quietu.domain\hackamole.quietu.domain.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Models\" />
     <None Remove="Authorization\" />
-    <None Remove="Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Authorization\" />
-    <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\hackamole.quietu.Domain\Hackamole.Quietu.Domain.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>

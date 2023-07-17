@@ -12,13 +12,12 @@
     <None Remove="Entities\" />
     <None Remove="Entities\Projections\" />
     <None Remove="Events\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Entities\" />
-    <None Remove="Entities\Projections\" />
+    <None Remove="Options\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Entities\Projections\" />
+    <Folder Include="Events\" />
+    <Folder Include="Options\" />
   </ItemGroup>
 </Project>
