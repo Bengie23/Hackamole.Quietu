@@ -1,9 +1,11 @@
 ﻿using System;
+using Hackamole.Quietu.Domain.Entities;
+
 namespace Hackamole.Quietu.Data
 {
     public interface IProductRepository
     {
-        string GetByProductByCode(string productCode);
+        ProductCode GetByProductByCode(string productCode);
     }
 }
 

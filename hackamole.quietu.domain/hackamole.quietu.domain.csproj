@@ -13,11 +13,15 @@
     <None Remove="Entities\Projections\" />
     <None Remove="Events\" />
     <None Remove="Options\" />
+    <None Remove="Events\ProductConsumptionCountEvent\" />
+    <None Remove="Events\ProductConsumptionByPrincipal\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Entities\Projections\" />
     <Folder Include="Events\" />
     <Folder Include="Options\" />
+    <Folder Include="Events\ProductConsumptionCountEvent\" />
+    <Folder Include="Events\ProductConsumptionByPrincipal\" />
   </ItemGroup>
 </Project>

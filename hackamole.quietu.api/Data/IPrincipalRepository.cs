@@ -1,9 +1,11 @@
 ﻿using System;
+using Hackamole.Quietu.Domain.Entities;
+
 namespace Hackamole.Quietu.Api.Data
 {
 	public interface IPrincipalRepository
 	{
-		string GetPrincipalByKeyId(string keyId);
+		Principal GetPrincipalById(int principalId);
 
 		bool SecretMatchesForPrincipalId(int principalId, string secret);
 	}

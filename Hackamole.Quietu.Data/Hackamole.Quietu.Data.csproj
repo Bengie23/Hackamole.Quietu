@@ -6,4 +6,7 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\hackamole.quietu.Domain\Hackamole.Quietu.Domain.csproj" />
+  </ItemGroup>
 </Project>
