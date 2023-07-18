@@ -1,25 +1,32 @@
 {
   "format": 1,
   "restore": {
-    "/Users/blopezgutierrez/code/Hackamole.Quietu/Hackamole.Quietu.Data/Hackamole.Quietu.Data.csproj": {}
+    "C:\\Projects\\HACKATON\\Hackamole.Quietu\\Hackamole.Quietu.Data\\Hackamole.Quietu.Data.csproj": {}
   },
   "projects": {
-    "/Users/blopezgutierrez/code/Hackamole.Quietu/Hackamole.Quietu.Data/Hackamole.Quietu.Data.csproj": {
+    "C:\\Projects\\HACKATON\\Hackamole.Quietu\\Hackamole.Quietu.Data\\Hackamole.Quietu.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/blopezgutierrez/code/Hackamole.Quietu/Hackamole.Quietu.Data/Hackamole.Quietu.Data.csproj",
+        "projectUniqueName": "C:\\Projects\\HACKATON\\Hackamole.Quietu\\Hackamole.Quietu.Data\\Hackamole.Quietu.Data.csproj",
         "projectName": "Hackamole.Quietu.Data",
-        "projectPath": "/Users/blopezgutierrez/code/Hackamole.Quietu/Hackamole.Quietu.Data/Hackamole.Quietu.Data.csproj",
-        "packagesPath": "/Users/blopezgutierrez/.nuget/packages/",
-        "outputPath": "/Users/blopezgutierrez/code/Hackamole.Quietu/Hackamole.Quietu.Data/obj/",
+        "projectPath": "C:\\Projects\\HACKATON\\Hackamole.Quietu\\Hackamole.Quietu.Data\\Hackamole.Quietu.Data.csproj",
+        "packagesPath": "C:\\Users\\Luis Lozada\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\HACKATON\\Hackamole.Quietu\\Hackamole.Quietu.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "/Users/blopezgutierrez/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Luis Lozada\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -53,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }
