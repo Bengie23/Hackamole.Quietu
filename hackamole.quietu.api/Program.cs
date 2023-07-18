@@ -1,11 +1,14 @@
+using hackamole.quietu.api.Authorization;
 using hackamole.quietu.domain.Commands;
 using hackamole.quietu.SharedKernel.Interfaces.Commands;
 using Hackamole.Quietu.Api.Authorization;
 using Hackamole.Quietu.Data;
+using Hackamole.Quietu.Domain.Interfaces;
 using Hackamole.Quietu.Domain.Options;
 using Hackamole.Quietu.SharedKernel.Events.configuration;
 using KafkaFlow;
 using KafkaFlow.Serializer;
+using Microsoft.OpenApi.Models;
 
 public class Program
 {
@@ -23,13 +26,41 @@ public class Program
         builder.Configuration.GetSection(nameof(JWTManagerOptions)).Bind(jwtManagerOptions);
         builder.Services.AddSingleton<JWTManagerOptions>(jwtManagerOptions);
         builder.Services.AddTransient<IJWTManager, JWTManager>();
+        builder.Services.AddHttpContextAccessor();
+        builder.Services.AddSingleton<IAuthenticatedPrincipalProvider, AuthenticatedPrincipalProvider>();
 
         builder.Services.RegisterRepositories();
         builder.Services.SetupDatabase();
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(option =>
+        {
+            option.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Hackamole.Quietu", Version = "V1" });
+            option.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                In = Microsoft.OpenApi.Models.ParameterLocation.Header,
+                Description = "Make sure to enter a valid JWT token",
+                Name = "Auth",
+                Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+                BearerFormat = "JWT",
+                Scheme = "Bearer"
+            });
+            option.AddSecurityRequirement(new Microsoft.OpenApi.Models.OpenApiSecurityRequirement
+            {
+                {
+                    new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    },
+                    new string[]{ }
+                }
+            });
+        });
         builder.Services.AddTransient<ICommandHandler<AuthorizeCommand>, AuthorizeCommandHandler>();
 
 
@@ -62,7 +93,9 @@ public class Program
 
         app.UseHttpsRedirection();
 
-        app.UseAuthorization();
+        //app.UseAuthorization();
+
+        app.UseMiddleware<JwtMiddleware>();
 
         app.MapControllers();
 

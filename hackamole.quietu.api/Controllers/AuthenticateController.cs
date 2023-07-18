@@ -1,13 +1,13 @@
 using Hackamole.Quietu.Api.Authorization;
 using Hackamole.Quietu.Data;
 using Hackamole.Quietu.Domain.DTOs;
+using Hackamole.Quietu.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Hackamole.Quietu.Api.Controllers
 {
     [ApiController]
-    [Authorize]
     [Route("api/[controller]")]
     public class AuthenticateController : ControllerBase
     {
@@ -23,7 +23,6 @@ namespace Hackamole.Quietu.Api.Controllers
             ArgumentNullException.ThrowIfNull(jWTManager, nameof(jwtManager));
         }
 
-        [AllowAnonymous]
         [HttpPost]
         public IActionResult Authenticate(AuthenticateRequestDTO model)
         {

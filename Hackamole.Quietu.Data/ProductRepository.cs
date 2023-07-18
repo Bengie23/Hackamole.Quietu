@@ -1,4 +1,5 @@
 ﻿using Hackamole.Quietu.Domain.Entities;
+using Hackamole.Quietu.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hackamole.Quietu.Data

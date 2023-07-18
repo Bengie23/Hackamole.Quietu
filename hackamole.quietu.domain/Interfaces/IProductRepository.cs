@@ -1,6 +1,7 @@
-﻿using Hackamole.Quietu.Domain.Entities;
+﻿using System;
+using Hackamole.Quietu.Domain.Entities;
 
-namespace Hackamole.Quietu.Data
+namespace Hackamole.Quietu.Domain.Interfaces
 {
     public interface IProductRepository
     {

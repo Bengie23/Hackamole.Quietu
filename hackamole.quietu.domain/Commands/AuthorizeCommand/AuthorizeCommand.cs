@@ -5,7 +5,7 @@ namespace hackamole.quietu.domain.Commands;
 
 public class AuthorizeCommand : BaseCommand, ICommand  {
 
-    public string PrincipalId { get; set; }
+    public int PrincipalId { get; set; }
 
     public string? ProductCode { get; set; }
 }

@@ -1,5 +1,6 @@
 ﻿using Hackamole.Quietu.Api.Authorization;
 using Hackamole.Quietu.Data;
+using Hackamole.Quietu.Domain.Interfaces;
 
 namespace hackamole.quietu.api.Authorization
 {
@@ -18,8 +19,11 @@ namespace hackamole.quietu.api.Authorization
             var principalId = manager.ValidateJwtToken(token);
             if (principalId != null)
             {
-                // attach user to context on successful jwt validation
-                context.Items["PrincipalId"] = principalRepository.GetPrincipalById(principalId.Value);
+                var principal = principalRepository.GetPrincipalById(principalId.Value);
+                if (principal is not null)
+                {
+                    context.Items["PrincipalId"] = principalId;
+                }
             }
 
             await _next(context);

@@ -1,5 +1,6 @@
 ﻿using Hackamole.Quietu.Data;
 using Hackamole.Quietu.Domain.Entities;
+using Hackamole.Quietu.Domain.Interfaces;
 using Hackamole.Quietu.Domain.Options;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;

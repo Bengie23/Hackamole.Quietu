@@ -6,15 +6,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\hackamole.quietu.sharedkernel\Hackamole.Quietu.SharedKernel.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <None Remove="Entities\" />
     <None Remove="Entities\Projections\" />
     <None Remove="Events\" />
     <None Remove="Options\" />
     <None Remove="Events\ProductConsumptionCountEvent\" />
     <None Remove="Events\ProductConsumptionByPrincipal\" />
+    <None Remove="Exceptions\" />
+    <None Remove="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\Projections\" />
@@ -22,8 +21,13 @@
     <Folder Include="Options\" />
     <Folder Include="Events\ProductConsumptionCountEvent\" />
     <Folder Include="Events\ProductConsumptionByPrincipal\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\hackamole.quietu.sharedkernel\Hackamole.Quietu.SharedKernel.csproj" />
   </ItemGroup>
 </Project>

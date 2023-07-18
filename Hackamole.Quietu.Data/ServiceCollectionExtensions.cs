@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Hackamole.Quietu.Domain.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Hackamole.Quietu.Data
 {
