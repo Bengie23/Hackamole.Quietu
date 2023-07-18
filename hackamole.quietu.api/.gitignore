@@ -234,16 +234,3 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
-hackamole.quietu.api/obj/project.nuget.cache
-hackamole.quietu.api/obj/project.nuget.cache
-hackamole.quietu.api/obj/project.nuget.cache
-hackamole.quietu.api/obj/project.assets.json
-hackamole.quietu.api/obj/hackamole.quietu.api.csproj.nuget.dgspec.json
-hackamole.quietu.api/obj/hackamole.quietu.api.csproj.nuget.dgspec.json
-*.cache
-*.props
-*.json
-Hackamole.Quietu.Data/obj/Hackamole.Quietu.Data.csproj.nuget.g.props
-Hackamole.Quietu.Data/obj/Hackamole.Quietu.Data.csproj.nuget.g.targets
-Hackamole.Quietu.Data/obj/project.assets.json
-Hackamole.Quietu.Data/obj/project.nuget.cache
