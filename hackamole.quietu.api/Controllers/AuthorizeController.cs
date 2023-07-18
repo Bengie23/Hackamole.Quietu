@@ -3,6 +3,7 @@ using hackamole.quietu.api.Authorization;
 using hackamole.quietu.domain.Commands;
 using hackamole.quietu.domain.DTOs;
 using hackamole.quietu.SharedKernel.Commands;
+using Hackamole.Quietu.Domain.Exceptions;
 using Hackamole.Quietu.Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,8 +32,14 @@ public class AuthorizeController: ControllerBase {
         command.CommandDate = DateTime.Now;
         command.ProductCode = request.ProductCode;
         command.PrincipalId = authenticatedPrincipalProvider.GetAuthenticatedPrincipalId();
-
-        authorizeCommandManager.Route(command);
+        try
+        {
+            authorizeCommandManager.Route(command);
+        }
+        catch (UnauthorizedAccessToProductException ex)
+        {
+            return Unauthorized(ex.Message);
+        }
 
         return Ok("");
     }
