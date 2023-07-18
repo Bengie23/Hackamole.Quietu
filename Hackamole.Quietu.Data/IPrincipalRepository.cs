@@ -4,9 +4,10 @@ namespace Hackamole.Quietu.Data
 {
     public interface IPrincipalRepository
     {
-        Principal GetPrincipalByKeyId(string keyId);
 
-        bool SecretMatchesForPrincipalId(int principalId, string secret);
+        Principal GetPrincipalById(int PrincipalId);
+
+        bool SecretMatchesForKeyId(string keyId, string secret, out Principal principal);
     }
 }
 

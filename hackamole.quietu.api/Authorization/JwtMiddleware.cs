@@ -1,6 +1,5 @@
-﻿using System;
-using Hackamole.Quietu.Api.Authorization;
-using Hackamole.Quietu.Api.Data;
+﻿using Hackamole.Quietu.Api.Authorization;
+using Hackamole.Quietu.Data;
 
 namespace hackamole.quietu.api.Authorization
 {
@@ -16,11 +15,11 @@ namespace hackamole.quietu.api.Authorization
         public async Task Invoke(HttpContext context, IPrincipalRepository principalRepository, IJWTManager manager)
         {
             var token = context.Request.Headers["Authorization"].FirstOrDefault()?.Split(" ").Last();
-            var userId = manager.ValidateJwtToken(token);
-            if (userId != null)
+            var principalId = manager.ValidateJwtToken(token);
+            if (principalId != null)
             {
                 // attach user to context on successful jwt validation
-                context.Items["User"] = principalRepository.GetPrincipalById(userId.Value);
+                context.Items["PrincipalId"] = principalRepository.GetPrincipalById(principalId.Value);
             }
 
             await _next(context);

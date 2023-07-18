@@ -1,4 +1,6 @@
-﻿using Hackamole.Quietu.Domain.Options;
+﻿using Hackamole.Quietu.Data;
+using Hackamole.Quietu.Domain.Entities;
+using Hackamole.Quietu.Domain.Options;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -10,25 +12,26 @@ namespace Hackamole.Quietu.Api.Authorization
 	public class JWTManager : IJWTManager
 	{
         private readonly JWTManagerOptions options;
-        //private string secret = "kvq5s8Pgbhxoz3knjdM84pCmsfXGT8Y4";
+        private readonly IProductRepository productRepository;
 
-        public JWTManager(JWTManagerOptions options)
+        public JWTManager(JWTManagerOptions options, IProductRepository productRepository)
         {
             this.options = options;
+            this.productRepository = productRepository;
 
+            ArgumentNullException.ThrowIfNull(productRepository,nameof(productRepository));
             ArgumentNullException.ThrowIfNull(options, nameof(options));
         }
 
         public string GenerateJwtToken(int principalId)
         {
             // generate token that is valid for 7 days
-
-            var product_codes = new List<string>() { "Product_A", "Product_B", "Product_C" };
+            var product_codes = productRepository.GetProductsByPrincipalId(principalId).Select(product => product.Code).ToList();
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(options.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new[] { new Claim("PrincipalId", principalId.ToString()), new Claim("ProductCodes", String.Join(",", product_codes.ToArray())) }),
+                Subject = new ClaimsIdentity(new[] { new Claim("PrincipalId", principalId.ToString()), new Claim("ProductCodes", String.Join(",", product_codes.ToArray() as object[])) }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
@@ -56,10 +59,10 @@ namespace Hackamole.Quietu.Api.Authorization
                 }, out SecurityToken validatedToken);
 
                 var jwtToken = (JwtSecurityToken)validatedToken;
-                var userId = int.Parse(jwtToken.Claims.First(x => x.Type == "PrincipalId").Value);
+                var PrincipalId = int.Parse(jwtToken.Claims.First(x => x.Type == "PrincipalId").Value);
 
                 // return user id from JWT token if validation successful
-                return userId;
+                return PrincipalId;
             }
             catch
             {

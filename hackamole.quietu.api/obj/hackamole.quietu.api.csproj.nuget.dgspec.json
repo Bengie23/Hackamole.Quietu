@@ -1,50 +1,38 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< Updated upstream
-    "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.api/Hackamole.Quietu.Api.csproj": {}
+    "D:\\benswengineer\\Quietu\\hackamole.quietu.api\\hackamole.quietu.api.csproj": {}
   },
   "projects": {
-    "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.api/Hackamole.Quietu.Api.csproj": {
+    "D:\\benswengineer\\Quietu\\hackamole.quietu.api\\hackamole.quietu.api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.api/Hackamole.Quietu.Api.csproj",
-        "projectName": "Hackamole.Quietu.Api",
-        "projectPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.api/Hackamole.Quietu.Api.csproj",
-        "packagesPath": "/Users/lalozadalopez/.nuget/packages/",
-        "outputPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.api/obj/",
-=======
-    "/Users/blopezgutierrez/code/Hackamole.Quietu/hackamole.quietu.api/Hackamole.Quietu.Api.csproj": {}
-  },
-  "projects": {
-    "/Users/blopezgutierrez/code/Hackamole.Quietu/hackamole.quietu.api/Hackamole.Quietu.Api.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "/Users/blopezgutierrez/code/Hackamole.Quietu/hackamole.quietu.api/Hackamole.Quietu.Api.csproj",
-        "projectName": "Hackamole.Quietu.Api",
-        "projectPath": "/Users/blopezgutierrez/code/Hackamole.Quietu/hackamole.quietu.api/Hackamole.Quietu.Api.csproj",
-        "packagesPath": "/Users/blopezgutierrez/.nuget/packages/",
-        "outputPath": "/Users/blopezgutierrez/code/Hackamole.Quietu/hackamole.quietu.api/obj/",
->>>>>>> Stashed changes
+        "projectUniqueName": "D:\\benswengineer\\Quietu\\hackamole.quietu.api\\hackamole.quietu.api.csproj",
+        "projectName": "hackamole.quietu.api",
+        "projectPath": "D:\\benswengineer\\Quietu\\hackamole.quietu.api\\hackamole.quietu.api.csproj",
+        "packagesPath": "C:\\Users\\benib\\.nuget\\packages\\",
+        "outputPath": "D:\\benswengineer\\Quietu\\hackamole.quietu.api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/blopezgutierrez/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\benib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.Domain/Hackamole.Quietu.Domain.csproj": {
-                "projectPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.Domain/Hackamole.Quietu.Domain.csproj"
+              "D:\\benswengineer\\Quietu\\Hackamole.Quietu.Data\\Hackamole.Quietu.Data.csproj": {
+                "projectPath": "D:\\benswengineer\\Quietu\\Hackamole.Quietu.Data\\Hackamole.Quietu.Data.csproj"
               },
-              "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.sharedkernel/Hackamole.Quietu.SharedKernel.csproj": {
-                "projectPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.sharedkernel/Hackamole.Quietu.SharedKernel.csproj"
+              "D:\\benswengineer\\Quietu\\hackamole.quietu.Domain\\Hackamole.Quietu.Domain.csproj": {
+                "projectPath": "D:\\benswengineer\\Quietu\\hackamole.quietu.Domain\\Hackamole.Quietu.Domain.csproj"
               }
             }
           }
@@ -59,6 +47,30 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "KafkaFlow": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "KafkaFlow.LogHandler.Console": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "KafkaFlow.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "KafkaFlow.Serializer": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "KafkaFlow.Serializer.JsonCore": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "KafkaFlow.TypedHandler": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[7.0.4, )"
@@ -95,34 +107,36 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.203/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.Domain/Hackamole.Quietu.Domain.csproj": {
+    "D:\\benswengineer\\Quietu\\Hackamole.Quietu.Data\\Hackamole.Quietu.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.Domain/Hackamole.Quietu.Domain.csproj",
-        "projectName": "Hackamole.Quietu.Domain",
-        "projectPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.Domain/Hackamole.Quietu.Domain.csproj",
-        "packagesPath": "/Users/lalozadalopez/.nuget/packages/",
-        "outputPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.Domain/obj/",
+        "projectUniqueName": "D:\\benswengineer\\Quietu\\Hackamole.Quietu.Data\\Hackamole.Quietu.Data.csproj",
+        "projectName": "Hackamole.Quietu.Data",
+        "projectPath": "D:\\benswengineer\\Quietu\\Hackamole.Quietu.Data\\Hackamole.Quietu.Data.csproj",
+        "packagesPath": "C:\\Users\\benib\\.nuget\\packages\\",
+        "outputPath": "D:\\benswengineer\\Quietu\\Hackamole.Quietu.Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/lalozadalopez/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\benib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.sharedkernel/Hackamole.Quietu.SharedKernel.csproj": {
-                "projectPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.sharedkernel/Hackamole.Quietu.SharedKernel.csproj"
+              "D:\\benswengineer\\Quietu\\hackamole.quietu.Domain\\Hackamole.Quietu.Domain.csproj": {
+                "projectPath": "D:\\benswengineer\\Quietu\\hackamole.quietu.Domain\\Hackamole.Quietu.Domain.csproj"
               }
             }
           }
@@ -136,6 +150,24 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -152,26 +184,93 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.sharedkernel/Hackamole.Quietu.SharedKernel.csproj": {
+    "D:\\benswengineer\\Quietu\\hackamole.quietu.Domain\\Hackamole.Quietu.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.sharedkernel/Hackamole.Quietu.SharedKernel.csproj",
-        "projectName": "Hackamole.Quietu.SharedKernel",
-        "projectPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.sharedkernel/Hackamole.Quietu.SharedKernel.csproj",
-        "packagesPath": "/Users/lalozadalopez/.nuget/packages/",
-        "outputPath": "/Users/lalozadalopez/code/Hackamole.Quietu/hackamole.quietu.sharedkernel/obj/",
+        "projectUniqueName": "D:\\benswengineer\\Quietu\\hackamole.quietu.Domain\\Hackamole.Quietu.Domain.csproj",
+        "projectName": "Hackamole.Quietu.Domain",
+        "projectPath": "D:\\benswengineer\\Quietu\\hackamole.quietu.Domain\\Hackamole.Quietu.Domain.csproj",
+        "packagesPath": "C:\\Users\\benib\\.nuget\\packages\\",
+        "outputPath": "D:\\benswengineer\\Quietu\\hackamole.quietu.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/lalozadalopez/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\benib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "D:\\benswengineer\\Quietu\\hackamole.quietu.sharedkernel\\Hackamole.Quietu.SharedKernel.csproj": {
+                "projectPath": "D:\\benswengineer\\Quietu\\hackamole.quietu.sharedkernel\\Hackamole.Quietu.SharedKernel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\benswengineer\\Quietu\\hackamole.quietu.sharedkernel\\Hackamole.Quietu.SharedKernel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\benswengineer\\Quietu\\hackamole.quietu.sharedkernel\\Hackamole.Quietu.SharedKernel.csproj",
+        "projectName": "Hackamole.Quietu.SharedKernel",
+        "projectPath": "D:\\benswengineer\\Quietu\\hackamole.quietu.sharedkernel\\Hackamole.Quietu.SharedKernel.csproj",
+        "packagesPath": "C:\\Users\\benib\\.nuget\\packages\\",
+        "outputPath": "D:\\benswengineer\\Quietu\\hackamole.quietu.sharedkernel\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\benib\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -189,6 +288,36 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "KafkaFlow": {
+              "target": "Package",
+              "version": "[2.4.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Binder": {
+              "target": "Package",
+              "version": "[7.0.1, )"
+            },
+            "Microsoft.Extensions.Configuration.FileExtensions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Microsoft.Extensions.FileProviders.Abstractions": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -205,7 +334,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

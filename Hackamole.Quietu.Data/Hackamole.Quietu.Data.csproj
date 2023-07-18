@@ -3,8 +3,14 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.2" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\hackamole.quietu.Domain\Hackamole.Quietu.Domain.csproj" />

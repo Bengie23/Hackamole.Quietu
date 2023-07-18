@@ -1,5 +1,4 @@
-﻿using System;
-namespace Hackamole.Quietu.Domain.Entities.Projections
+﻿namespace Hackamole.Quietu.Domain.Entities.Projections
 {
 	public class ProductCodeUsageCount
 	{
@@ -7,4 +6,3 @@ namespace Hackamole.Quietu.Domain.Entities.Projections
 		public int UsageCount { get; set; }
 	}
 }
-

@@ -1,5 +1,5 @@
-using System;
 using Hackamole.Quietu.Api.Authorization;
+using Hackamole.Quietu.Data;
 using Hackamole.Quietu.Domain.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,11 +12,14 @@ namespace Hackamole.Quietu.Api.Controllers
     public class AuthenticateController : ControllerBase
     {
         private readonly IJWTManager jwtManager;
+        private readonly IPrincipalRepository PrincipalRepository;
 
-        public AuthenticateController(IJWTManager jWTManager)
+        public AuthenticateController(IJWTManager jWTManager, IPrincipalRepository principalRepository)
         {
             this.jwtManager = jWTManager;
+            this.PrincipalRepository = principalRepository;
 
+            ArgumentNullException.ThrowIfNull(principalRepository,nameof(principalRepository));
             ArgumentNullException.ThrowIfNull(jWTManager, nameof(jwtManager));
         }
 
@@ -24,15 +27,12 @@ namespace Hackamole.Quietu.Api.Controllers
         [HttpPost]
         public IActionResult Authenticate(AuthenticateRequestDTO model)
         {
+            if (PrincipalRepository.SecretMatchesForKeyId(model.KeyId, model.Secret, out var principal))
+            {
+                return Ok(new AuthenticateResponseDTO(jwtManager.GenerateJwtToken(principal.Id)));
+            }
 
-
-            //var response = _userService.Authenticate(model);
-
-            //if (response == null)
-            //    return BadRequest(new { message = "Username or password is incorrect" });
-
-            var principalId = 1;
-            return Ok(new AuthenticateResponseDTO(jwtManager.GenerateJwtToken(principalId)));
+            return Unauthorized();
         }
     }
 }

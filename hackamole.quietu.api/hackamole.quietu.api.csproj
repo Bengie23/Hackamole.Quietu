@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
@@ -28,6 +27,7 @@
     <Folder Include="Authorization\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Hackamole.Quietu.Data\Hackamole.Quietu.Data.csproj" />
     <ProjectReference Include="..\hackamole.quietu.Domain\Hackamole.Quietu.Domain.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
