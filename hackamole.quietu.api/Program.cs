@@ -1,6 +1,3 @@
-using Hackamole.Quietu.Api.Authorization;
-using Hackamole.Quietu.Api.Models;
-
 using System.Reflection;
 using hackamole.quietu.domain.Commands;
 using hackamole.quietu.SharedKernel.Interfaces.Commands;
@@ -9,6 +6,8 @@ using KafkaFlow;
 using KafkaFlow.Serializer;
 using Microsoft.Extensions.Configuration;
 using Hackamole.Quietu.SharedKernel.Events.configuration;
+using Hackamole.Quietu.Domain.Options;
+using Hackamole.Quietu.Api.Authorization;
 
 public class Program
 {

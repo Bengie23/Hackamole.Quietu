@@ -1,4 +1,4 @@
-﻿using Hackamole.Quietu.Api.Models;
+﻿using Hackamole.Quietu.Domain.Options;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
