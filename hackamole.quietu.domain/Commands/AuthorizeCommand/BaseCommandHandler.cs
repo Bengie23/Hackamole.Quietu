@@ -1,6 +1,5 @@
 ﻿using Hackamole.Quietu.Domain.Exceptions;
 using hackamole.quietu.SharedKernel.Interfaces.Commands;
-using Microsoft.AspNetCore.Http;
 
 namespace Hackamole.Quietu.Domain.Commands.AuthorizeCommand
 {

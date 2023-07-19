@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KafkaFlow.TypedHandler;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace Hackamole.Quietu.SharedKernel.Events.Interfaces
 {
     public interface IDomainEvent
     {
+
     }
 }

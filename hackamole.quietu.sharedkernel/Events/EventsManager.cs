@@ -1,5 +1,5 @@
-﻿using Hackamole.Quietu.SharedKernel.Events.configuration;
-using Hackamole.Quietu.SharedKernel.Events.Interfaces;
+﻿using Hackamole.Quietu.SharedKernel.Events.Interfaces;
+using Hackamole.Quietu.SharedKernel.Events.Options;
 using KafkaFlow;
 using KafkaFlow.Producers;
 using Microsoft.Extensions.Configuration;
@@ -10,11 +10,11 @@ namespace Hackamole.Quietu.SharedKernel.Events
     public class EventsManager<T> where T : IDomainEvent
     {
         private IMessageProducer messageProducer;
-        private BusProviderConfiguration busProviderConfiguration;
+        private BusProviderOptions busProviderConfiguration;
 
         public EventsManager(IConfiguration configuration, IServiceProvider serviceProvider)
         {
-            busProviderConfiguration = configuration.GetSection("BusProvider").Get<BusProviderConfiguration>();
+            busProviderConfiguration = configuration.GetSection("BusProvider").Get<BusProviderOptions>();
             var producerAccesor = serviceProvider.GetService(typeof(IProducerAccessor)) as IProducerAccessor;
             messageProducer = producerAccesor.GetProducer(busProviderConfiguration.Producer);
         }

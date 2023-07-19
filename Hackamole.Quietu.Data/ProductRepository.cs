@@ -18,5 +18,12 @@ namespace Hackamole.Quietu.Data
         {
             return dbContext.Principals.Include(principal => principal.Products).FirstOrDefault(principal => principal.Id == id)?.Products;
         }
+
+        public void IncreaseProductUsageCount(string productCode)
+        {
+            //var item = dbContext.IncreaseCounterNewTable.FirstOrDefault(pc => pc.ProductCode == productCode);
+            //item.count += 1;
+            //dbContext.SaveChanges();
+        }
     }
 }

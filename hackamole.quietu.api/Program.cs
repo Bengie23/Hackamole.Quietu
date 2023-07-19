@@ -5,7 +5,7 @@ using Hackamole.Quietu.Api.Authorization;
 using Hackamole.Quietu.Data;
 using Hackamole.Quietu.Domain.Interfaces;
 using Hackamole.Quietu.Domain.Options;
-using Hackamole.Quietu.SharedKernel.Events.configuration;
+using Hackamole.Quietu.SharedKernel.Events.Options;
 using KafkaFlow;
 using KafkaFlow.Serializer;
 using Microsoft.OpenApi.Models;
@@ -16,11 +16,7 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        var config = new ConfigurationBuilder()
-        .AddJsonFile("appsettings.json", optional: false)
-        .Build();
-
-        var busProviderConfiguration = config.GetSection("BusProvider").Get<BusProviderConfiguration>();
+        var busProviderConfiguration = builder.Configuration.GetSection("BusProvider").Get<BusProviderOptions>();
 
         JWTManagerOptions jwtManagerOptions = new JWTManagerOptions();
         builder.Configuration.GetSection(nameof(JWTManagerOptions)).Bind(jwtManagerOptions);
@@ -63,7 +59,6 @@ public class Program
         });
         builder.Services.AddTransient<ICommandHandler<AuthorizeCommand>, AuthorizeCommandHandler>();
 
-
         builder.Services.AddKafka(
             kafka => kafka
                 .UseConsoleLog()
@@ -75,6 +70,7 @@ public class Program
                             busProviderConfiguration.Producer,
                             producer => producer
                                 .DefaultTopic(busProviderConfiguration.Topic)
+                                .WithProducerConfig(new Confluent.Kafka.ProducerConfig { MessageMaxBytes = 2000000,  })
                                 .AddMiddlewares(m =>
                                     m.AddSerializer<JsonCoreSerializer>()
                                     )

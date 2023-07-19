@@ -31,5 +31,6 @@
     <ProjectReference Include="..\hackamole.quietu.Domain\Hackamole.Quietu.Domain.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\hackamole.quietu.sharedkernel\Hackamole.Quietu.SharedKernel.csproj" />
   </ItemGroup>
 </Project>

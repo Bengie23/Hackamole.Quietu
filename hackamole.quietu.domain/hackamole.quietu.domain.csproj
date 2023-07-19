@@ -17,15 +17,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\Projections\" />
-    <Folder Include="Events\" />
     <Folder Include="Options\" />
-    <Folder Include="Events\ProductConsumptionCountEvent\" />
-    <Folder Include="Events\ProductConsumptionByPrincipal\" />
-    <Folder Include="Exceptions\" />
-    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MySql.EntityFrameworkCore" Version="7.0.2" />
+    <PackageReference Include="KafkaFlow.TypedHandler" Version="2.4.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\hackamole.quietu.sharedkernel\Hackamole.Quietu.SharedKernel.csproj" />

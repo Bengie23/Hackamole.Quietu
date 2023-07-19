@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hackamole.Quietu.SharedKernel.Events.configuration
+namespace Hackamole.Quietu.SharedKernel.Events.Options
 {
-    public class BusProviderConfiguration
+    public class BusProviderOptions
     {
         public string Endpoint { get; set; }
         public string Producer { get; set; }

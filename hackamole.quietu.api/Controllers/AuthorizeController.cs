@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[AuthorizeForQuietu]
 [Route("api/[controller]")]
 public class AuthorizeController: ControllerBase {
 
@@ -25,13 +24,13 @@ public class AuthorizeController: ControllerBase {
     }
 
     [HttpPost]
-    [Route("Api/[Controller]/Authorize")]
+    [Route("Api/Authorize")]
     public IActionResult Post(AuthorizeDTO request)
     {
         var command = new AuthorizeCommand();
         command.CommandDate = DateTime.Now;
         command.ProductCode = request.ProductCode;
-        command.PrincipalId = authenticatedPrincipalProvider.GetAuthenticatedPrincipalId();
+        //command.PrincipalId = authenticatedPrincipalProvider.GetAuthenticatedPrincipalId();
         try
         {
             authorizeCommandManager.Route(command);
