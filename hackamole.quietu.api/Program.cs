@@ -1,4 +1,5 @@
 using hackamole.quietu.api.Authorization;
+using hackamole.quietu.api.Serialization;
 using hackamole.quietu.domain.Commands;
 using hackamole.quietu.SharedKernel.Interfaces.Commands;
 using Hackamole.Quietu.Api.Authorization;
@@ -8,6 +9,7 @@ using Hackamole.Quietu.Domain.Options;
 using Hackamole.Quietu.SharedKernel.Events.Options;
 using KafkaFlow;
 using KafkaFlow.Serializer;
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.OpenApi.Models;
 
 public class Program
@@ -78,6 +80,11 @@ public class Program
                 )
         );
 
+        builder.Services.Configure<JsonOptions>(options =>
+        {
+            options.SerializerOptions.PropertyNameCaseInsensitive = false;
+            options.SerializerOptions.PropertyNamingPolicy = new SnakeCaseNamingPolicy();
+        });
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -89,7 +96,10 @@ public class Program
 
         app.UseHttpsRedirection();
 
-        //app.UseAuthorization();
+        app.UseCors(x => x
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
 
         app.UseMiddleware<JwtMiddleware>();
 

@@ -19,7 +19,8 @@ namespace Hackamole.Quietu.Data
                 new Product { Code = "ProductA" },
                 new Product { Code = "ProductB" },
                 new Product { Code = "ProductC" },
-                new Product { Code = "ProductD" }
+                new Product { Code = "ProductD" },
+                new Product { Code = "PRODUCT_GROUP_HUB_APPOINTMENTS_FOR_PARTNERS"}
             };
             DbContext.Principals.Add(new Domain.Entities.Principal()
             {
