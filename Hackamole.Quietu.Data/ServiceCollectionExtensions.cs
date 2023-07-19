@@ -1,4 +1,5 @@
 ﻿using Hackamole.Quietu.Domain.Interfaces;
+using Hackamole.Quietu.Domain.Querys;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Hackamole.Quietu.Data
@@ -19,6 +20,13 @@ namespace Hackamole.Quietu.Data
             services.AddTransient<DbInitializer>();
             services.AddTransient<QuietuSeeder>();
 
+            return services;
+        }
+
+        public static IServiceCollection RegisterQueries(this IServiceCollection services)
+        {
+            services.AddScoped<ProductConsumptionQuery>();
+            services.AddScoped<ProductDetailConsumptionQuery>();
             return services;
         }
     }

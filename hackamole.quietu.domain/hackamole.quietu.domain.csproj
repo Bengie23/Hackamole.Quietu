@@ -14,10 +14,12 @@
     <None Remove="Events\ProductConsumptionByPrincipal\" />
     <None Remove="Exceptions\" />
     <None Remove="Interfaces\" />
+    <None Remove="Transformations\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\Projections\" />
     <Folder Include="Options\" />
+    <Folder Include="Transformations\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="KafkaFlow.TypedHandler" Version="2.4.0" />

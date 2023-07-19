@@ -28,6 +28,7 @@ public class Program
         builder.Services.AddSingleton<IAuthenticatedPrincipalProvider, AuthenticatedPrincipalProvider>();
 
         builder.Services.RegisterRepositories();
+        builder.Services.RegisterQueries();
         builder.Services.SetupDatabase();
 
         builder.Services.AddControllers();

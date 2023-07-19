@@ -14,6 +14,8 @@ namespace Hackamole.Quietu.Domain.Entities
 		public string Secret { get; set; }
 
 		public List<Product> Products { get; set; } = new();
+
+		public PrincipalType Type { get; set; }
 	}
 }
 
