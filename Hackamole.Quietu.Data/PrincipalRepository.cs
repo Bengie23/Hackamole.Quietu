@@ -17,6 +17,19 @@ namespace Hackamole.Quietu.Data
             return DbContext.Principals.FirstOrDefault(Principal => Principal.Id == principalId);
         }
 
+        public void RegisterPrincipalAttemptToAccessProduct(int principalId, string productCode, bool authorized)
+        {
+            DbContext.PrincipalAttemptedProducts.Add(new Domain.Entities.Projections.PrincipalAttemptedProduct
+            {
+                Authorized = authorized,
+                ProductCode = productCode,
+                PrincipalId = principalId,
+                AuthorizedAt = DateTime.Now
+            });
+
+            DbContext.SaveChanges();
+        }
+
         public bool SecretMatchesForKeyId(string keyId, string secret, out Principal principal)
         {
             principal = DbContext.Principals.FirstOrDefault(Principal => Principal.KeyId == keyId);

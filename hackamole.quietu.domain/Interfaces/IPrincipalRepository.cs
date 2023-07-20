@@ -9,6 +9,8 @@ namespace Hackamole.Quietu.Domain.Interfaces
         Principal GetPrincipalById(int PrincipalId);
 
         bool SecretMatchesForKeyId(string keyId, string secret, out Principal principal);
+
+        void RegisterPrincipalAttemptToAccessProduct(int principalId, string productCode, bool authorized);
     }
 }
 

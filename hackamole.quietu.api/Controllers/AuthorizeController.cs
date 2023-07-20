@@ -5,10 +5,10 @@ using hackamole.quietu.domain.DTOs;
 using hackamole.quietu.SharedKernel.Commands;
 using Hackamole.Quietu.Domain.Exceptions;
 using Hackamole.Quietu.Domain.Interfaces;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
+[AuthorizeForQuietu]
 [Route("api/[controller]")]
 public class AuthorizeController: ControllerBase {
 
@@ -29,7 +29,7 @@ public class AuthorizeController: ControllerBase {
         var command = new AuthorizeCommand();
         command.CommandDate = DateTime.Now;
         command.ProductCode = request.ProductCode;
-        //command.PrincipalId = authenticatedPrincipalProvider.GetAuthenticatedPrincipalId();
+        command.PrincipalId = authenticatedPrincipalProvider.GetAuthenticatedPrincipalId();
         try
         {
             authorizeCommandManager.Route(command);

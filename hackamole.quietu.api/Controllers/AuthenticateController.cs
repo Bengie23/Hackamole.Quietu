@@ -26,7 +26,7 @@ namespace Hackamole.Quietu.Api.Controllers
         [HttpPost]
         public IActionResult Authenticate(AuthenticateRequestDTO model)
         {
-            if (PrincipalRepository.SecretMatchesForKeyId(model.KeyId, model.Secret, out var principal))
+            if (PrincipalRepository.SecretMatchesForKeyId(model.ApiKey, model.Secret, out var principal))
             {
                 return Ok(new AuthenticateResponseDTO(jwtManager.GenerateJwtToken(principal.Id)));
             }

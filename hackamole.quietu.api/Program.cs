@@ -1,13 +1,18 @@
 using hackamole.quietu.api.Authorization;
+using hackamole.quietu.api.Serialization;
 using hackamole.quietu.domain.Commands;
 using hackamole.quietu.SharedKernel.Interfaces.Commands;
 using Hackamole.Quietu.Api.Authorization;
 using Hackamole.Quietu.Data;
+using Hackamole.Quietu.Domain.Events;
 using Hackamole.Quietu.Domain.Interfaces;
 using Hackamole.Quietu.Domain.Options;
+using Hackamole.Quietu.SharedKernel.Events;
+using Hackamole.Quietu.SharedKernel.Events.Interfaces;
 using Hackamole.Quietu.SharedKernel.Events.Options;
 using KafkaFlow;
 using KafkaFlow.Serializer;
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.OpenApi.Models;
 using KafkaFlow.Serializer.SchemaRegistry;
 
@@ -27,6 +32,7 @@ public class Program
         builder.Services.AddSingleton<IAuthenticatedPrincipalProvider, AuthenticatedPrincipalProvider>();
 
         builder.Services.RegisterRepositories();
+        builder.Services.RegisterQueries();
         builder.Services.SetupDatabase();
 
         builder.Services.AddControllers();
@@ -59,6 +65,9 @@ public class Program
             });
         });
         builder.Services.AddTransient<ICommandHandler<AuthorizeCommand>, AuthorizeCommandHandler>();
+        builder.Services.AddTransient<IDomainEventHandler<AuthorizedEvent>, ProductCodeUsageEventHandler>();
+        builder.Services.AddTransient<IDomainEventHandler<AuthorizedEvent>, PrincipalAttemptedProductEventHandler>();
+        builder.Services.AddTransient(typeof(IEventsManager<>), typeof(SynteticEventsManager<>));
 
         builder.Services.AddKafka(
             kafka => kafka
@@ -79,6 +88,11 @@ public class Program
                 )
         );
 
+        builder.Services.Configure<JsonOptions>(options =>
+        {
+            options.SerializerOptions.PropertyNameCaseInsensitive = false;
+            options.SerializerOptions.PropertyNamingPolicy = new SnakeCaseNamingPolicy();
+        });
         var app = builder.Build();
 
         // Configure the HTTP request pipeline.
@@ -90,7 +104,10 @@ public class Program
 
         app.UseHttpsRedirection();
 
-        //app.UseAuthorization();
+        app.UseCors(x => x
+        .AllowAnyOrigin()
+        .AllowAnyMethod()
+        .AllowAnyHeader());
 
         app.UseMiddleware<JwtMiddleware>();
 
