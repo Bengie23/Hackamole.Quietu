@@ -9,6 +9,7 @@ using Hackamole.Quietu.SharedKernel.Events.Options;
 using KafkaFlow;
 using KafkaFlow.Serializer;
 using Microsoft.OpenApi.Models;
+using KafkaFlow.Serializer.SchemaRegistry;
 
 public class Program
 {

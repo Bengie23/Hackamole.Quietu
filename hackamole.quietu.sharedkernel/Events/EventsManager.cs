@@ -4,6 +4,7 @@ using KafkaFlow;
 using KafkaFlow.Producers;
 using Microsoft.Extensions.Configuration;
 using System.Text.Json;
+using KafkaFlow.Serializer.SchemaRegistry;
 
 namespace Hackamole.Quietu.SharedKernel.Events
 {
@@ -21,7 +22,7 @@ namespace Hackamole.Quietu.SharedKernel.Events
 
         public void Raise(T raisedEvent)
         {
-            messageProducer.Produce(busProviderConfiguration.Topic, Guid.NewGuid().ToString(), JsonSerializer.Serialize(raisedEvent));
+            messageProducer.Produce(busProviderConfiguration.Topic, Guid.NewGuid().ToString(), raisedEvent);
         }
     }
 }

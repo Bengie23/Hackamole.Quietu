@@ -1,8 +1,10 @@
-﻿using Hackamole.Quietu.Domain.Events.ProductConsumptionByPrincipal;
+﻿using Hackamole.Quietu.Domain.Events;
+using Hackamole.Quietu.Domain.Events.ProductConsumptionByPrincipal;
 using Hackamole.Quietu.Domain.Events.ProductConsumptionCountEvent;
 using Hackamole.Quietu.SharedKernel.Events.Options;
 using KafkaFlow;
 using KafkaFlow.Serializer;
+using KafkaFlow.Serializer.SchemaRegistry;
 using KafkaFlow.TypedHandler;
 
 namespace Hackamole.Quietu.Authorization.Event.Handler.Bootstrap
@@ -25,12 +27,23 @@ namespace Hackamole.Quietu.Authorization.Event.Handler.Bootstrap
                                     .WithName("hackamole-quietu-event-handler-1")
                                     .WithBufferSize(100)
                                     .WithWorkersCount(1)
-                                    .WithoutStoringOffsets()
+                                    .WithConsumerConfig(new Confluent.Kafka.ConsumerConfig()
+                                    {
+                                        GroupId = "quietu-group",
+                                        AutoOffsetReset = Confluent.Kafka.AutoOffsetReset.Earliest,
+                                        BootstrapServers = busProviderConfiguration.Endpoint
+                                    })
+                                    .WithAutoOffsetReset(AutoOffsetReset.Earliest)
                                     .AddMiddlewares(middlewares =>
                                         middlewares
                                             .AddSerializer<JsonCoreSerializer>()
-                                            .AddTypedHandlers(handler => 
-                                                handler.AddHandler<ProductConsumptionCountEventHandler2>()
+                                            .AddTypedHandlers(handler =>
+                                                handler
+                                                    .AddHandler<ProductConsumptionCountEventHandler>()
+                                                    .WhenNoHandlerFound( context =>
+                                                    {
+                                                        throw new Exception(String.Format("Message not handled > partition: {0} > offset: {1}", context.ConsumerContext.Partition, context.ConsumerContext.Offset));
+                                                    })
                                              )
                                     )
                             )
