@@ -31,7 +31,7 @@ namespace Hackamole.Quietu.Authorization.Event.Handler.Bootstrap
                                             .AddTypedHandlers(handler =>
                                                 handler
                                                     .AddHandler<ProductCodeUsageEventHandler>()
-                                                    
+                                                    .AddHandler<PrincipalAttemptedProductEventHandler>()
                                                     .WhenNoHandlerFound( context =>
                                                     {
                                                         Console.WriteLine(String.Format("Message not handled > partition: {0} > offset: {1}", context.ConsumerContext.Partition, context.ConsumerContext.Offset));
