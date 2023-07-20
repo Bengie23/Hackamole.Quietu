@@ -33,7 +33,7 @@ namespace Hackamole.Quietu.Data
             return dbContext.Principals.Include(principal => principal.Products).FirstOrDefault(principal => principal.Id == id)?.Products;
         }
 
-        public void RegisterProductCodeUsage(string productCode, bool authorized)
+        public Task RegisterProductCodeUsage(string productCode, bool authorized)
         {
             var data = dbContext.ProductCodeUsages.Where(product => product.ProductCode == productCode);
             if (data.Any())
@@ -47,7 +47,6 @@ namespace Hackamole.Quietu.Data
                 {
                     existing.Success -= 1;
                 }
-                dbContext.SaveChanges();
             }
 
             if (!data.Any())
@@ -59,6 +58,7 @@ namespace Hackamole.Quietu.Data
                     ProductCode = productCode
                 });
             }
+            return dbContext.SaveChangesAsync();
         }
     }
 }

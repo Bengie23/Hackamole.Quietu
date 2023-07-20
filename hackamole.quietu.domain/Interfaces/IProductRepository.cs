@@ -9,7 +9,7 @@ namespace Hackamole.Quietu.Domain.Interfaces
         List<Product> GetProductsByPrincipalId(int id);
         List<ProductCodeUsageCount> GetProductCodeUsageProjections();
         List<PrincipalAttemptedProduct> GetProductAttemptedProductProjections(string productCode);
-        void RegisterProductCodeUsage(string productCode, bool authorized);
+        Task RegisterProductCodeUsage(string productCode, bool authorized);
     }
 }
 

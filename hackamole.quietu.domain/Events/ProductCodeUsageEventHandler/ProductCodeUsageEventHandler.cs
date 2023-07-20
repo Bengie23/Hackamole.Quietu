@@ -19,9 +19,7 @@ namespace Hackamole.Quietu.Domain.Events
 
         public Task Handle(IMessageContext context, AuthorizedEvent message)
         {
-            Thread.Sleep(500);
-            productRepository.RegisterProductCodeUsage(message.ProductCode, message.Authorized);
-            return Task.CompletedTask;
+            return productRepository.RegisterProductCodeUsage(message.ProductCode, message.Authorized);
         }
     }
 }
