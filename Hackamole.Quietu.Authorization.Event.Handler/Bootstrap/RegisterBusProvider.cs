@@ -24,7 +24,7 @@ namespace Hackamole.Quietu.Authorization.Event.Handler.Bootstrap
                                     .WithName("hackamole-quietu-event-handler-1")
                                     .WithBufferSize(100)
                                     .WithWorkersCount(1)
-                                    .WithAutoOffsetReset(AutoOffsetReset.Earliest)
+                                    .WithAutoOffsetReset(AutoOffsetReset.Latest)
                                     .AddMiddlewares(middlewares =>
                                         middlewares
                                             .AddSerializer<JsonCoreSerializer>()

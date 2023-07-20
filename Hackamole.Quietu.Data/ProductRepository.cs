@@ -2,6 +2,7 @@
 using Hackamole.Quietu.Domain.Entities.Projections;
 using Hackamole.Quietu.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Hackamole.Quietu.Data
 {
@@ -9,9 +10,10 @@ namespace Hackamole.Quietu.Data
     {
         private readonly QuietuDbContext dbContext;
 
-        public ProductRepository(QuietuDbContext dbContext)
+        public ProductRepository(IServiceProvider serviceProvider)
         {
-            this.dbContext = dbContext;
+            var scope = serviceProvider.CreateScope();
+            this.dbContext = scope.ServiceProvider.GetService<QuietuDbContext>();
 
             ArgumentNullException.ThrowIfNull(dbContext,nameof(dbContext));
         }
