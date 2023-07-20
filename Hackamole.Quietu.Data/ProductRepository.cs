@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Hackamole.Quietu.Data
 {
-    internal class ProductRepository : IProductRepository
+    public class ProductRepository : IProductRepository
     {
         private readonly QuietuDbContext dbContext;
 

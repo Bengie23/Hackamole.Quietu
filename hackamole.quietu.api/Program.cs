@@ -65,9 +65,7 @@ public class Program
             });
         });
         builder.Services.AddTransient<ICommandHandler<AuthorizeCommand>, AuthorizeCommandHandler>();
-        builder.Services.AddTransient<IDomainEventHandler<AuthorizedEvent>, ProductCodeUsageEventHandler>();
-        builder.Services.AddTransient<IDomainEventHandler<AuthorizedEvent>, PrincipalAttemptedProductEventHandler>();
-        builder.Services.AddTransient(typeof(IEventsManager<>), typeof(SynteticEventsManager<>));
+        builder.Services.AddTransient(typeof(IEventsManager<>), typeof(EventsManager<>));
 
         builder.Services.AddKafka(
             kafka => kafka

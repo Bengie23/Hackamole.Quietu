@@ -8,7 +8,7 @@ using KafkaFlow.Serializer.SchemaRegistry;
 
 namespace Hackamole.Quietu.SharedKernel.Events
 {
-    public class EventsManager<T> where T : IDomainEvent
+    public class EventsManager<T> : IEventsManager<T> where T : IDomainEvent
     {
         private IMessageProducer messageProducer;
         private BusProviderOptions busProviderConfiguration;
