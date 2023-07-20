@@ -4,6 +4,7 @@ using KafkaFlow;
 using KafkaFlow.Serializer;
 using KafkaFlow.TypedHandler;
 using Microsoft.Extensions.DependencyInjection;
+using KafkaFlow.Serializer.SchemaRegistry;
 
 var services = new ServiceCollection();
 
