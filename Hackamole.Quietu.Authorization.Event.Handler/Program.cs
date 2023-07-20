@@ -16,14 +16,9 @@ namespace Hackamole.Quietu.Authorization.Event.Handler
                 .ConfigureServices(services =>
                 {
                     services.AddLogging(logging => logging.AddConsole());
-                    //services.SetupDatabase();
-                    //services.RegisterRepositories();
-                    //services.RegisterQueries();
-                    services.AddDbContext<QuietuDbContext>();
-                    services.AddTransient<DbInitializer>();
-                    services.AddTransient<QuietuSeeder>();
-                    services.AddTransient<IPrincipalRepository, PrincipalRepository>();
-                    services.AddTransient<IProductRepository, ProductRepository>();
+                    services.SetupDatabase();
+                    services.RegisterRepositories();
+                    services.RegisterQueries();
                     services.AddBusProvider(configuration);
                     services.AddHostedService<Worker>();
                 })

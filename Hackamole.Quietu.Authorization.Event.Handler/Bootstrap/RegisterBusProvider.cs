@@ -6,7 +6,7 @@ using KafkaFlow.TypedHandler;
 
 namespace Hackamole.Quietu.Authorization.Event.Handler.Bootstrap
 {
-    internal static class RegisterBusProvider
+    public static class RegisterBusProvider
     {
         public static void AddBusProvider(this IServiceCollection serviceCollection, IConfiguration config)
         {

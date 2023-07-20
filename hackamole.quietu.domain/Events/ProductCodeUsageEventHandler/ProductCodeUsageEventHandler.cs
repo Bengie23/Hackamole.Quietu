@@ -13,7 +13,8 @@ namespace Hackamole.Quietu.Domain.Events
 
         public ProductCodeUsageEventHandler(IServiceProvider services)
 		{
-            this.productRepository = services.GetService<IProductRepository>();
+            var scope = services.CreateScope();
+            this.productRepository = scope.ServiceProvider.GetService<IProductRepository>();
 		}
 
         public Task Handle(IMessageContext context, AuthorizedEvent message)
