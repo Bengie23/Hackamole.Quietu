@@ -3,6 +3,7 @@ using Hackamole.Quietu.Domain.Commands.AuthorizeCommand;
 using Hackamole.Quietu.Domain.Events;
 using Hackamole.Quietu.Domain.Interfaces;
 using Hackamole.Quietu.SharedKernel.Events;
+using Hackamole.Quietu.SharedKernel.Events.Interfaces;
 using Microsoft.Extensions.Configuration;
 
 namespace hackamole.quietu.domain.Commands;
@@ -12,21 +13,29 @@ public class AuthorizeCommandHandler : BaseCommandHandler<AuthorizeCommand>, ICo
     private IServiceProvider serviceProvider;
     private IConfiguration configuration;
     private readonly IProductRepository productRepository;
+    private readonly IAuthenticatedPrincipalProvider authenticatedPrincipalProvider;
+    private readonly IEventsManager<AuthorizedEvent> eventsManager;
 
     public AuthorizeCommandHandler( IConfiguration configuration,
                                     IServiceProvider serviceProvider,
-                                    IProductRepository productRepository)
+                                    IProductRepository productRepository,
+                                    IAuthenticatedPrincipalProvider authenticatedPrincipalProvider,
+                                    IEventsManager<AuthorizedEvent> eventsManager)
     {
         this.serviceProvider = serviceProvider;
         this.configuration = configuration;
         this.productRepository = productRepository;
+        this.authenticatedPrincipalProvider = authenticatedPrincipalProvider;
+        this.eventsManager = eventsManager;
     }
 
     protected override void Handle(AuthorizeCommand command)
     {
-        new EventsManager<AuthorizedEvent>(configuration, serviceProvider).Raise(new AuthorizedEvent
+        bool authorized = productRepository.GetProductsByPrincipalId(command.PrincipalId).Any(product => product.Code == command.ProductCode);
+        
+        eventsManager.Raise(new AuthorizedEvent
         {
-            Authorized = true,
+            Authorized = authorized,
             PrincipalId = command.PrincipalId.ToString(),
             ProductCode = command.ProductCode
         });
@@ -34,6 +43,6 @@ public class AuthorizeCommandHandler : BaseCommandHandler<AuthorizeCommand>, ICo
 
     protected override bool IsSecureCommand(AuthorizeCommand command)
     {
-        return productRepository.GetProductsByPrincipalId(command.PrincipalId).Any(product => product.Code == command.ProductCode);
+        return command.PrincipalId == authenticatedPrincipalProvider.GetAuthenticatedPrincipalId();
     }
 }

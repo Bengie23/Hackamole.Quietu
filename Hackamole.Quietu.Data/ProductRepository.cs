@@ -32,5 +32,33 @@ namespace Hackamole.Quietu.Data
         {
             return dbContext.Principals.Include(principal => principal.Products).FirstOrDefault(principal => principal.Id == id)?.Products;
         }
+
+        public void RegisterProductCodeUsage(string productCode, bool authorized)
+        {
+            var data = dbContext.ProductCodeUsages.Where(product => product.ProductCode == productCode);
+            if (data.Any())
+            {
+                var existing = data.First();
+                if (authorized)
+                {
+                    existing.Success += 1;
+                }
+                else
+                {
+                    existing.Success -= 1;
+                }
+                dbContext.SaveChanges();
+            }
+
+            if (!data.Any())
+            {
+                dbContext.ProductCodeUsages.Add(new ProductCodeUsageCount
+                {
+                    Failed = !authorized ? 1:0,
+                    Success = authorized ? 1:0,
+                    ProductCode = productCode
+                });
+            }
+        }
     }
 }

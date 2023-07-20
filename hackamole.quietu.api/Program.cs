@@ -4,8 +4,11 @@ using hackamole.quietu.domain.Commands;
 using hackamole.quietu.SharedKernel.Interfaces.Commands;
 using Hackamole.Quietu.Api.Authorization;
 using Hackamole.Quietu.Data;
+using Hackamole.Quietu.Domain.Events;
 using Hackamole.Quietu.Domain.Interfaces;
 using Hackamole.Quietu.Domain.Options;
+using Hackamole.Quietu.SharedKernel.Events;
+using Hackamole.Quietu.SharedKernel.Events.Interfaces;
 using Hackamole.Quietu.SharedKernel.Events.Options;
 using KafkaFlow;
 using KafkaFlow.Serializer;
@@ -61,6 +64,9 @@ public class Program
             });
         });
         builder.Services.AddTransient<ICommandHandler<AuthorizeCommand>, AuthorizeCommandHandler>();
+        builder.Services.AddTransient<IDomainEventHandler<AuthorizedEvent>, ProductCodeUsageEventHandler>();
+        builder.Services.AddTransient<IDomainEventHandler<AuthorizedEvent>, PrincipalAttemptedProductEventHandler>();
+        builder.Services.AddTransient(typeof(IEventsManager<>), typeof(SynteticEventsManager<>));
 
         builder.Services.AddKafka(
             kafka => kafka
