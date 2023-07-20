@@ -24,7 +24,6 @@ public class AuthorizeController: ControllerBase {
     }
 
     [HttpPost]
-    [Route("Api/Authorize")]
     public IActionResult Post(AuthorizeDTO request)
     {
         var command = new AuthorizeCommand();

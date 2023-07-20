@@ -1,9 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using Hackamole.Quietu.Domain.Events.ProductConsumptionCountEvent;
+﻿using Hackamole.Quietu.Domain.Events.ProductConsumptionCountEvent;
 using Hackamole.Quietu.Data;
 using KafkaFlow;
-using KafkaFlow.Producers;
 using KafkaFlow.Serializer;
 using KafkaFlow.TypedHandler;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,13 +14,13 @@ services.AddKafka(
         .AddCluster(
             cluster => cluster
                 .WithBrokers(new[] { "localhost:9092" })
-                .CreateTopicIfNotExists("AccessAuthorized", 6, 1)
                 .AddConsumer(
                     consumer => consumer
-                        .Topic("AccessAuthorized")
-                        .WithGroupId("group-1")
-                        .WithBufferSize(1000)
-                        .WithWorkersCount(3)
+                        .Topic("quietu-authorized-access")
+                        .WithGroupId("quietu-group")
+                        .WithBufferSize(100)
+                        .WithWorkersCount(2)
+                        .WithAutoOffsetReset(AutoOffsetReset.Earliest)
                         .AddMiddlewares(
                             middlewares => middlewares
                                 .AddSerializer<JsonCoreSerializer>()
@@ -40,3 +37,5 @@ var bus = provider.CreateKafkaBus();
 await bus.StartAsync();
 
 Console.WriteLine("Type the number of messages to produce or 'exit' to quit:");
+
+Console.ReadKey();

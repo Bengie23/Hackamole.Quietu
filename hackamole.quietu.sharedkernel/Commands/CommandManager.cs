@@ -20,7 +20,7 @@ public class CommandManager<T> where T: ICommand
         if (serviceProvider != null)
         {
             dynamic handler = serviceProvider.GetService(factoryType);
-            handler.TryHandle(command);
+            handler.Handle(command);
         }
     }
 }

@@ -17,18 +17,20 @@ namespace Hackamole.Quietu.Authorization.Event.Handler.Bootstrap
                     .AddCluster(
                         cluster => cluster
                             .WithBrokers(new[] { busProviderConfiguration.Endpoint })
-                            .CreateTopicIfNotExists(busProviderConfiguration.Topic, 1, 1)
                             .AddConsumer(ConsumerBuilder =>
                                 ConsumerBuilder
+                                    .ManualAssignPartitions(busProviderConfiguration.Topic, new[] { 1 })
                                     .Topic(busProviderConfiguration.Topic)
-                                    .WithGroupId("Hackamole-Group")
+                                    .WithGroupId("quietu-group")
+                                    .WithName("hackamole-quietu-event-handler-1")
                                     .WithBufferSize(100)
-                                    .WithWorkersCount(3)
+                                    .WithWorkersCount(1)
+                                    .WithoutStoringOffsets()
                                     .AddMiddlewares(middlewares =>
                                         middlewares
                                             .AddSerializer<JsonCoreSerializer>()
                                             .AddTypedHandlers(handler => 
-                                                handler.AddHandler<ProductConsumptionCountEventHandler>()
+                                                handler.AddHandler<ProductConsumptionCountEventHandler2>()
                                              )
                                     )
                             )

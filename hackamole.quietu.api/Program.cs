@@ -65,12 +65,12 @@ public class Program
                 .AddCluster(
                     cluster => cluster
                         .WithBrokers(new[] { busProviderConfiguration.Endpoint })
-                        .CreateTopicIfNotExists(busProviderConfiguration.Topic, 1, 1)
+                        .CreateTopicIfNotExists(busProviderConfiguration.Topic, 3, 1)
                         .AddProducer(
                             busProviderConfiguration.Producer,
                             producer => producer
                                 .DefaultTopic(busProviderConfiguration.Topic)
-                                .WithProducerConfig(new Confluent.Kafka.ProducerConfig { MessageMaxBytes = 2000000,  })
+                                .WithProducerConfig(new Confluent.Kafka.ProducerConfig { MessageMaxBytes = 2000000  })
                                 .AddMiddlewares(m =>
                                     m.AddSerializer<JsonCoreSerializer>()
                                     )
