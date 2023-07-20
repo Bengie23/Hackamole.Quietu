@@ -29,7 +29,7 @@ public class AuthorizeCommandHandler : BaseCommandHandler<AuthorizeCommand>, ICo
         this.eventsManager = eventsManager;
     }
 
-    protected override void Handle(AuthorizeCommand command)
+    public override void Handle(AuthorizeCommand command)
     {
         bool authorized = productRepository.GetProductsByPrincipalId(command.PrincipalId).Any(product => product.Code == command.ProductCode);
         
@@ -41,7 +41,7 @@ public class AuthorizeCommandHandler : BaseCommandHandler<AuthorizeCommand>, ICo
         });
     }
 
-    protected override bool IsSecureCommand(AuthorizeCommand command)
+    public override bool IsSecureCommand(AuthorizeCommand command)
     {
         return command.PrincipalId == authenticatedPrincipalProvider.GetAuthenticatedPrincipalId();
     }

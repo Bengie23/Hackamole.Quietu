@@ -23,6 +23,8 @@
 */[Oo]bj/
 hackamole.quietu.api/obj/
 hackamole.quietu.api/bin/
+.vs/Hackamole.Quietu/xs/
+.vs/
 
 # Visual Studio 2015 cache/options directory
 .vs/

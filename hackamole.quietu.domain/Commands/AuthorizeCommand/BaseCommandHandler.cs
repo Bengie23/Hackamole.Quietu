@@ -5,9 +5,9 @@ namespace Hackamole.Quietu.Domain.Commands.AuthorizeCommand
 {
     public abstract class BaseCommandHandler<TCommand> : ICommandHandler<TCommand> where TCommand : ICommand
     {
-        protected abstract void Handle(TCommand command);
+        public abstract void Handle(TCommand command);
 
-        protected abstract bool IsSecureCommand(TCommand command);
+        public abstract bool IsSecureCommand(TCommand command);
 
         public void TryHandle(TCommand command)
         {

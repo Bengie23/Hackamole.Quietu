@@ -3,11 +3,10 @@ using Hackamole.Quietu.SharedKernel.Events.Options;
 using KafkaFlow;
 using KafkaFlow.Producers;
 using Microsoft.Extensions.Configuration;
-using System.Text.Json;
 
 namespace Hackamole.Quietu.SharedKernel.Events
 {
-    public class EventsManager<T> where T : IDomainEvent
+    public class EventsManager<T> : IEventsManager<T> where T : IDomainEvent
     {
         private IMessageProducer messageProducer;
         private BusProviderOptions busProviderConfiguration;
@@ -21,7 +20,7 @@ namespace Hackamole.Quietu.SharedKernel.Events
 
         public void Raise(T raisedEvent)
         {
-            messageProducer.Produce(busProviderConfiguration.Topic, Guid.NewGuid().ToString(), JsonSerializer.Serialize(raisedEvent));
+            messageProducer.Produce(busProviderConfiguration.Topic, Guid.NewGuid().ToString(), raisedEvent);
         }
     }
 }

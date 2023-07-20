@@ -11,12 +11,9 @@ namespace Hackamole.Quietu.Data
         public DbSet<ProductCodeUsageCount> ProductCodeUsages { get; set; }
         public DbSet<PrincipalAttemptedProduct> PrincipalAttemptedProducts { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public QuietuDbContext(DbContextOptions<QuietuDbContext> options): base(options)
         {
-            optionsBuilder.UseMySQL("server=localhost;database=quietu;user=root;password=password");
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-        }
+
+        } 
     }
 }

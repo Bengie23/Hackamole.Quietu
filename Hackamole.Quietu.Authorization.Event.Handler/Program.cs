@@ -1,8 +1,6 @@
 using Hackamole.Quietu.Authorization.Event.Handler.Bootstrap;
 using Hackamole.Quietu.Data;
 using Hackamole.Quietu.Domain.Interfaces;
-using KafkaFlow;
-using System.Runtime.CompilerServices;
 
 namespace Hackamole.Quietu.Authorization.Event.Handler
 {
@@ -15,11 +13,12 @@ namespace Hackamole.Quietu.Authorization.Event.Handler
             var configuration = builder.Build();
 
             IHost host = Host.CreateDefaultBuilder(args)
-                .ConfigureServices(async services =>
+                .ConfigureServices(services =>
                 {
                     services.AddLogging(logging => logging.AddConsole());
-                    services.RegisterRepositories();
                     services.SetupDatabase();
+                    services.RegisterRepositories();
+                    services.RegisterQueries();
                     services.AddBusProvider(configuration);
                     services.AddHostedService<Worker>();
                 })

@@ -9,6 +9,7 @@ namespace Hackamole.Quietu.Domain.DTOs
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public class AuthenticateRequestDTO
     {
+        [Required]
         [JsonProperty("api_key")]
         public string ApiKey { get; set; }
 

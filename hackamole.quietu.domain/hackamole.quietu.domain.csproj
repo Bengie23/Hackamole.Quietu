@@ -15,14 +15,19 @@
     <None Remove="Exceptions\" />
     <None Remove="Interfaces\" />
     <None Remove="Transformations\" />
+    <None Remove="Events\ProductCodeUsageEventHandler\" />
+    <None Remove="Events\PrincipalAttemptedProductEventHandler\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\Projections\" />
     <Folder Include="Options\" />
     <Folder Include="Transformations\" />
+    <Folder Include="Events\ProductCodeUsageEventHandler\" />
+    <Folder Include="Events\PrincipalAttemptedProductEventHandler\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="KafkaFlow.TypedHandler" Version="2.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
   <ItemGroup>

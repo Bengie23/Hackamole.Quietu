@@ -1,5 +1,4 @@
-﻿using Hackamole.Quietu.Domain.Events.ProductConsumptionByPrincipal;
-using Hackamole.Quietu.Domain.Events.ProductConsumptionCountEvent;
+﻿using Hackamole.Quietu.Domain.Events;
 using Hackamole.Quietu.SharedKernel.Events.Options;
 using KafkaFlow;
 using KafkaFlow.Serializer;
@@ -7,7 +6,7 @@ using KafkaFlow.TypedHandler;
 
 namespace Hackamole.Quietu.Authorization.Event.Handler.Bootstrap
 {
-    internal static class RegisterBusProvider
+    public static class RegisterBusProvider
     {
         public static void AddBusProvider(this IServiceCollection serviceCollection, IConfiguration config)
         {
@@ -17,18 +16,26 @@ namespace Hackamole.Quietu.Authorization.Event.Handler.Bootstrap
                     .AddCluster(
                         cluster => cluster
                             .WithBrokers(new[] { busProviderConfiguration.Endpoint })
-                            .CreateTopicIfNotExists(busProviderConfiguration.Topic, 1, 1)
                             .AddConsumer(ConsumerBuilder =>
                                 ConsumerBuilder
+                                    .ManualAssignPartitions(busProviderConfiguration.Topic, new[] { 1 })
                                     .Topic(busProviderConfiguration.Topic)
-                                    .WithGroupId("Hackamole-Group")
+                                    .WithGroupId("quietu-group")
+                                    .WithName("hackamole-quietu-event-handler-1")
                                     .WithBufferSize(100)
-                                    .WithWorkersCount(3)
+                                    .WithWorkersCount(1)
+                                    .WithAutoOffsetReset(AutoOffsetReset.Latest)
                                     .AddMiddlewares(middlewares =>
                                         middlewares
                                             .AddSerializer<JsonCoreSerializer>()
-                                            .AddTypedHandlers(handler => 
-                                                handler.AddHandler<ProductConsumptionCountEventHandler>()
+                                            .AddTypedHandlers(handler =>
+                                                handler
+                                                    .AddHandler<ProductCodeUsageEventHandler>()
+                                                    .AddHandler<PrincipalAttemptedProductEventHandler>()
+                                                    .WhenNoHandlerFound( context =>
+                                                    {
+                                                        Console.WriteLine(String.Format("Message not handled > partition: {0} > offset: {1}", context.ConsumerContext.Partition, context.ConsumerContext.Offset));
+                                                    })
                                              )
                                     )
                             )

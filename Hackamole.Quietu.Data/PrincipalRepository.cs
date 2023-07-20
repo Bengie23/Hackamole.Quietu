@@ -1,5 +1,6 @@
 ﻿using Hackamole.Quietu.Domain.Entities;
 using Hackamole.Quietu.Domain.Interfaces;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Hackamole.Quietu.Data
 {
@@ -7,17 +8,19 @@ namespace Hackamole.Quietu.Data
     {
         private readonly QuietuDbContext DbContext;
 
-        public PrincipalRepository(QuietuDbContext dbContext)
+        public PrincipalRepository(IServiceProvider serviceProvider)
         {
-            this.DbContext = dbContext;
-            ArgumentNullException.ThrowIfNull(dbContext, nameof(dbContext));
+            var scope = serviceProvider.CreateScope();
+            this.DbContext = scope.ServiceProvider.GetService<QuietuDbContext>();
+            ArgumentNullException.ThrowIfNull(DbContext, nameof(DbContext));
         }
+
         public Principal GetPrincipalById(int principalId)
         {
             return DbContext.Principals.FirstOrDefault(Principal => Principal.Id == principalId);
         }
 
-        public void RegisterPrincipalAttemptToAccessProduct(int principalId, string productCode, bool authorized)
+        public Task RegisterPrincipalAttemptToAccessProduct(int principalId, string productCode, bool authorized)
         {
             DbContext.PrincipalAttemptedProducts.Add(new Domain.Entities.Projections.PrincipalAttemptedProduct
             {
@@ -27,7 +30,7 @@ namespace Hackamole.Quietu.Data
                 AuthorizedAt = DateTime.Now
             });
 
-            DbContext.SaveChanges();
+            return DbContext.SaveChangesAsync();
         }
 
         public bool SecretMatchesForKeyId(string keyId, string secret, out Principal principal)

@@ -16,10 +16,10 @@
 
         public void Run()
         {
-            DbContext.Database.EnsureDeleted();
-            DbContext.Database.EnsureCreated();
+            //DbContext.Database.EnsureDeleted();
+            //DbContext.Database.EnsureCreated();
 
-            DbSeeder.Seed();
+            //DbSeeder.Seed();
         }
     }
 }
