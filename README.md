@@ -23,8 +23,8 @@ user: ```admin@admin.io``` password: ```admin```
 
 ## How to grow horizontally with more event handlers
 
-In an event-driven application, messages(events) and message brokers are essential to decouple asynchronous operations in our domain. Our application has one event ```authorizedEvent``` with multiple handlers (```PrincipalAttempedProductEventHandler``` and ```ProductCodeUsageEventHandler``` performing different actions in parallel. This is how we can represent in a diagram the communication that happens after raising that event from the command.
+In an event-driven application, messages(events) and message brokers are essential to decouple asynchronous operations in our domain. Our application has one event ```Hackamole.Quietu.domain.events.AuthorizeEvent``` with multiple handlers (```Hackamole.Quietu.domain.events.PrincipalAttempedProductEventHandler``` and ```Hackamole.Quietu.domain.events.ProductCodeUsageEventHandler``` performing different actions in parallel. This is how we can represent in a diagram the communication that happens after raising that event from the command.
 
 ![AuthorizedEvent_2x](https://github.com/Bengie23/Hackamole.Quietu/assets/9501182/617b2269-974e-43ea-8cc9-c90aec7e15c0)
 
-The gray areas are not part of the current solution, but they illustrate how easy it could be to create Event Handlers that extend the functionality of the microservice without affecting the core API that handles authorization for a product code and all of them are working asynchronously. _**possibilities are endless.**_
+The gray areas are not part of the current solution, but they illustrate how easy it could be to create Event Handlers that extend the functionality of the microservice without affecting the core API that handles authorization for a product code, and all of them are working asynchronously. _**possibilities are endless.**_
