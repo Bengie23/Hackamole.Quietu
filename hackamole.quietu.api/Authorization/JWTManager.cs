@@ -27,7 +27,7 @@ namespace Hackamole.Quietu.Api.Authorization
         public string GenerateJwtToken(int principalId)
         {
             // generate token that is valid for 7 days
-            var product_codes = productRepository.GetProductsByPrincipalId(principalId).Select(product => product.Code).ToList();
+            var product_codes = productRepository.GetProductsByPrincipalId(principalId).Select(product => product.Code).Take(10).ToList();
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(options.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor

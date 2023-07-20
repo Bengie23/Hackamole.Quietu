@@ -1,5 +1,6 @@
 ﻿using Hackamole.Quietu.Domain.Interfaces;
 using Hackamole.Quietu.Domain.Querys;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Hackamole.Quietu.Data
@@ -16,7 +17,11 @@ namespace Hackamole.Quietu.Data
 
         public static IServiceCollection SetupDatabase(this IServiceCollection services)
         {
-            services.AddDbContext<QuietuDbContext>();
+            services.AddDbContext<QuietuDbContext>(options =>
+            
+                options.UseMySQL("server=localhost;database=quietu;user=root;password=password"),
+                ServiceLifetime.Transient
+            );
             services.AddTransient<DbInitializer>();
             services.AddTransient<QuietuSeeder>();
 

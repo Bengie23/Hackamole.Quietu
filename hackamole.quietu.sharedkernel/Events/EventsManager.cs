@@ -3,8 +3,6 @@ using Hackamole.Quietu.SharedKernel.Events.Options;
 using KafkaFlow;
 using KafkaFlow.Producers;
 using Microsoft.Extensions.Configuration;
-using System.Text.Json;
-using KafkaFlow.Serializer.SchemaRegistry;
 
 namespace Hackamole.Quietu.SharedKernel.Events
 {

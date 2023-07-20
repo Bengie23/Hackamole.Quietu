@@ -19,7 +19,8 @@ namespace Hackamole.Quietu.Domain.Events
 
         public Task Handle(IMessageContext context, AuthorizedEvent message)
         {
-            return new Task(() => { principalRepository.RegisterPrincipalAttemptToAccessProduct(int.Parse(message.PrincipalId), message.ProductCode, message.Authorized); });
+            principalRepository.RegisterPrincipalAttemptToAccessProduct(int.Parse(message.PrincipalId), message.ProductCode, message.Authorized);
+            return Task.CompletedTask;
         }
     }
 }
