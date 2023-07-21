@@ -20,8 +20,14 @@ docker compose -f full-stack.yml up
 ```
 user: ```admin@admin.io``` password: ```admin```
 
+- - - -
 
-## How to grow horizontally with more event handlers
+# Architecture and expansion
+
+## CQRS
+
+## Event handlers
+### How to grow horizontally almost effortlessly
 
 In an event-driven application, messages(events) and message brokers are essential to decouple asynchronous operations in our domain. Our application has one event ```Hackamole.Quietu.domain.events.AuthorizeEvent``` with multiple handlers (```Hackamole.Quietu.domain.events.PrincipalAttempedProductEventHandler``` and ```Hackamole.Quietu.domain.events.ProductCodeUsageEventHandler``` performing different actions in parallel. This is how we can represent in a diagram the communication that happens after raising that event from the command.
 
