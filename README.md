@@ -70,5 +70,22 @@ public static void AddBusProvider(this IServiceCollection serviceCollection, ICo
     );
 }
 ```
-Every handler should implement the interface ```IMessageHandler<T>``` where ```T``` is the event type produced by the producer. (see 
+Every handler should implement the interface ```IMessageHandler<T>``` where ```T``` is the event type produced by the producer.
+
+```c#
+eventsManager.Raise(new AuthorizedEvent
+{
+    Authorized = authorized,
+    PrincipalId = command.PrincipalId.ToString(),
+    ProductCode = command.ProductCode
+});
+```
+
+```c#
+public void Raise(T raisedEvent)
+{
+    messageProducer.Produce(busProviderConfiguration.Topic, Guid.NewGuid().ToString(), raisedEvent);
+}
+```
+(you can find this in ```hackamole.quietu.domain/Commands/AuthorizeCommand/AuthorizeCommandHandler.cs``` and ```hackamole.quietu.sharedkernel/Events/EventsManager```)
 
