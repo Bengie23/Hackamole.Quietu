@@ -73,6 +73,26 @@ public static void AddBusProvider(this IServiceCollection serviceCollection, ICo
 Every handler should implement the interface ```IMessageHandler<T>``` where ```T``` is the event type produced by the producer.
 
 ```c#
+public class PrincipalAttemptedProductEventHandler : IMessageHandler<AuthorizedEvent>
+{
+    private readonly IPrincipalRepository principalRepository;
+    private readonly ILogger<PrincipalAttemptedProductEventHandler> logger;
+
+    public PrincipalAttemptedProductEventHandler(ILogger<PrincipalAttemptedProductEventHandler> logger, IServiceProvider services)
+    {
+        var scope = services.CreateScope();
+        this.principalRepository = scope.ServiceProvider.GetService<IPrincipalRepository>();
+    }
+
+    public Task Handle(IMessageContext context, AuthorizedEvent message)
+    {
+        return principalRepository.RegisterPrincipalAttemptToAccessProduct(int.Parse(message.PrincipalId), message.ProductCode, message.Authorized);
+    }
+}
+```
+The event handled by the class above is sent by the following routines in the application
+
+```c#
 eventsManager.Raise(new AuthorizedEvent
 {
     Authorized = authorized,
