@@ -1,4 +1,5 @@
 ﻿using Hackamole.Quietu.Domain.Interfaces;
+using Hackamole.Quietu.Domain.Options;
 using Hackamole.Quietu.Domain.Querys;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -7,7 +8,7 @@ namespace Hackamole.Quietu.Data
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection RegisterRepositories(this IServiceCollection services)
+        public static IServiceCollection AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<IPrincipalRepository, PrincipalRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
@@ -15,11 +16,16 @@ namespace Hackamole.Quietu.Data
             return services;
         }
 
-        public static IServiceCollection SetupDatabase(this IServiceCollection services)
+        public static IServiceCollection AddDatabase(this IServiceCollection services)
         {
+            var scope = services.BuildServiceProvider().CreateScope();
+            var connStringOptions = scope.ServiceProvider.GetService<ConnectionStringOptions>();
+
+            ArgumentNullException.ThrowIfNull(connStringOptions, nameof(connStringOptions));
+
             services.AddDbContext<QuietuDbContext>(options =>
             
-                options.UseMySQL("server=localhost;database=quietu;user=root;password=password"),
+                options.UseMySQL(connStringOptions.Quietu),
                 ServiceLifetime.Transient
             );
             services.AddTransient<DbInitializer>();
@@ -28,7 +34,7 @@ namespace Hackamole.Quietu.Data
             return services;
         }
 
-        public static IServiceCollection RegisterQueries(this IServiceCollection services)
+        public static IServiceCollection AddQueries(this IServiceCollection services)
         {
             services.AddScoped<ProductConsumptionQuery>();
             services.AddScoped<ProductDetailConsumptionQuery>();

@@ -1,8 +1,7 @@
-using hackamole.quietu.SharedKernel.Interfaces.Commands;
+using hackamole.quietu.SharedKernel.Commands.Interfaces;
 using Hackamole.Quietu.Domain.Commands.AuthorizeCommand;
 using Hackamole.Quietu.Domain.Events;
 using Hackamole.Quietu.Domain.Interfaces;
-using Hackamole.Quietu.SharedKernel.Events;
 using Hackamole.Quietu.SharedKernel.Events.Interfaces;
 using Microsoft.Extensions.Configuration;
 

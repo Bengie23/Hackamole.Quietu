@@ -1,4 +1,4 @@
-namespace hackamole.quietu.SharedKernel.Interfaces.Commands;
+namespace hackamole.quietu.SharedKernel.Commands.Interfaces;
 
 public interface ICommand {
 

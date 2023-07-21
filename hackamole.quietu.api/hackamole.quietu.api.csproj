@@ -23,11 +23,9 @@
 
   <ItemGroup>
     <None Remove="Authorization\" />
-    <None Remove="Serialization\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authorization\" />
-    <Folder Include="Serialization\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hackamole.Quietu.Data\Hackamole.Quietu.Data.csproj" />

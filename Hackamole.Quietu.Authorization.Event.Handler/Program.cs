@@ -15,10 +15,11 @@ namespace Hackamole.Quietu.Authorization.Event.Handler
             IHost host = Host.CreateDefaultBuilder(args)
                 .ConfigureServices(services =>
                 {
+                    services.AddConnectionStringOptions(configuration);
                     services.AddLogging(logging => logging.AddConsole());
-                    services.SetupDatabase();
-                    services.RegisterRepositories();
-                    services.RegisterQueries();
+                    services.AddDatabase();
+                    services.AddRepositories();
+                    services.AddQueries();
                     services.AddBusProvider(configuration);
                     services.AddHostedService<Worker>();
                 })

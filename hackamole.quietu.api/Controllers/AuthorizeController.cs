@@ -5,6 +5,7 @@ using hackamole.quietu.domain.DTOs;
 using hackamole.quietu.SharedKernel.Commands;
 using Hackamole.Quietu.Domain.Exceptions;
 using Hackamole.Quietu.Domain.Interfaces;
+using Hackamole.Quietu.SharedKernel.Commands.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -12,15 +13,16 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/[controller]")]
 public class AuthorizeController: ControllerBase {
 
-    private IServiceProvider serviceProvider;
-    private CommandManager<AuthorizeCommand> authorizeCommandManager;
+    private ICommandsManager<AuthorizeCommand> authorizeCommandsManager;
     private readonly IAuthenticatedPrincipalProvider authenticatedPrincipalProvider;
 
-    public AuthorizeController(IServiceProvider serviceProvider, IAuthenticatedPrincipalProvider authenticatedPrincipalProvider)
+    public AuthorizeController(IAuthenticatedPrincipalProvider authenticatedPrincipalProvider, ICommandsManager<AuthorizeCommand> authorizeCommandsManager)
     {
-        this.serviceProvider = serviceProvider;
-        this.authorizeCommandManager = new CommandManager<AuthorizeCommand>(serviceProvider);
+        this.authorizeCommandsManager = authorizeCommandsManager;
         this.authenticatedPrincipalProvider = authenticatedPrincipalProvider;
+
+        ArgumentNullException.ThrowIfNull(authorizeCommandsManager, nameof(authorizeCommandsManager));
+        ArgumentNullException.ThrowIfNull(authenticatedPrincipalProvider, nameof(authenticatedPrincipalProvider));
     }
 
     [HttpPost]
@@ -32,7 +34,7 @@ public class AuthorizeController: ControllerBase {
         command.PrincipalId = authenticatedPrincipalProvider.GetAuthenticatedPrincipalId();
         try
         {
-            authorizeCommandManager.Route(command);
+            authorizeCommandsManager.Route(command);
         }
         catch (UnauthorizedAccessToProductException ex)
         {

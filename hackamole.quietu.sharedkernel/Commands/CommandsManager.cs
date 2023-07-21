@@ -1,12 +1,13 @@
-using hackamole.quietu.SharedKernel.Interfaces.Commands;
+using hackamole.quietu.SharedKernel.Commands.Interfaces;
+using Hackamole.Quietu.SharedKernel.Commands.Interfaces;
 
 namespace hackamole.quietu.SharedKernel.Commands;
 
-public class CommandManager<T> where T: ICommand
+public class CommandsManager<T> : ICommandsManager<T> where T: ICommand
 {
     private IServiceProvider serviceProvider;
 
-    public CommandManager(IServiceProvider serviceProvider)
+    public CommandsManager(IServiceProvider serviceProvider)
     {
         this.serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
     }

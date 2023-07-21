@@ -1,5 +1,5 @@
 ﻿using Hackamole.Quietu.Domain.Exceptions;
-using hackamole.quietu.SharedKernel.Interfaces.Commands;
+using hackamole.quietu.SharedKernel.Commands.Interfaces;
 
 namespace Hackamole.Quietu.Domain.Commands.AuthorizeCommand
 {

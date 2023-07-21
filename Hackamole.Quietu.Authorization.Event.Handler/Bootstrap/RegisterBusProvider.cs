@@ -1,4 +1,5 @@
-﻿using Hackamole.Quietu.Domain.Events;
+﻿using Hackamole.Quietu.Data;
+using Hackamole.Quietu.Domain.Events;
 using Hackamole.Quietu.SharedKernel.Events.Options;
 using KafkaFlow;
 using KafkaFlow.Serializer;
@@ -41,6 +42,17 @@ namespace Hackamole.Quietu.Authorization.Event.Handler.Bootstrap
                             )
                     )
             );
+        }
+
+
+
+        public static IServiceCollection AddConnectionStringOptions(this IServiceCollection services, IConfiguration config)
+        {
+            ConnectionStringOptions connectionStringOptions = new ConnectionStringOptions();
+            config.GetSection(ConnectionStringOptions.Route).Bind(connectionStringOptions);
+            services.AddSingleton(connectionStringOptions);
+
+            return services;
         }
     }
 }
