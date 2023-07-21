@@ -7,13 +7,13 @@
 https://dotnet.microsoft.com/en-us/download/dotnet/7.0
 ```
 
-### Single instance of kafka and zookeeper (perfect for a fast demo)
+### Single instance of Kafka and zookeeper (perfect for a fast demo)
 ```
 cd hackamole.quietu.docker
 docker compose -f zk-single-kafka-single.yml up
 ```
 
-### Kafka, Zookeeper, admin UI and more (perfect to play around and get to know the ecosystem)
+### Kafka, Zookeeper, admin UI, and more (perfect to play around and get to know the ecosystem)
 ```
 cd hackamole.quietu.docker
 docker compose -f full-stack.yml up
@@ -25,6 +25,11 @@ user: ```admin@admin.io``` password: ```admin```
 # Architecture and expansion
 
 ## CQRS
+
+Commands are atomic operations that can be performed for domain-specific actions; a command can have single or multiple command handlers responsible for executing business logic and be married (along with the command) to the domain specification through its business rules, a.k.a; of its ubiquitous language.
+
+
+
 
 ## Event handlers
 ### How to grow horizontally almost effortlessly
