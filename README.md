@@ -28,8 +28,26 @@ user: ```admin@admin.io``` password: ```admin```
 
 Commands are atomic operations that can be performed for domain-specific actions; a command can have single or multiple command handlers responsible for executing business logic and be married (along with the command) to the domain specification through its business rules, a.k.a; of its ubiquitous language.
 
+Every command should implement the interface ```ICommandHandler<T>``` where ```T``` is the command type it handles.
 
+```c#
+public class PrincipalAttemptedProductEventHandler : IMessageHandler<AuthorizedEvent>
+{
+    private readonly IPrincipalRepository principalRepository;
+    private readonly ILogger<PrincipalAttemptedProductEventHandler> logger;
 
+    public PrincipalAttemptedProductEventHandler(ILogger<PrincipalAttemptedProductEventHandler> logger, IServiceProvider services)
+    {
+        var scope = services.CreateScope();
+        this.principalRepository = scope.ServiceProvider.GetService<IPrincipalRepository>();
+    }
+
+    public Task Handle(IMessageContext context, AuthorizedEvent message)
+    {
+        return principalRepository.RegisterPrincipalAttemptToAccessProduct(int.Parse(message.PrincipalId), message.ProductCode, message.Authorized);
+    }
+}
+```
 
 ## Event handlers
 ### How to grow horizontally almost effortlessly
