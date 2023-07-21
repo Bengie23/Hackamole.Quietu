@@ -26,6 +26,8 @@ user: ```admin@admin.io``` password: ```admin```
 
 ## CQRS
 
+### Commands
+
 Commands are atomic operations that can be performed for domain-specific actions; a command can have single or multiple command handlers responsible for executing business logic and be married (along with the command) to the domain specification through its business rules, a.k.a; of its ubiquitous language.
 
 Every command should implement the interface ```ICommandHandler<T>``` where ```T``` is the command type it handles.
@@ -68,6 +70,20 @@ public IActionResult Post(AuthorizeDTO request)
     }
 
     return Ok("");
+}
+```
+Every command should implement the interface ```ICommandHandler<T>``` where ```T``` is the command type it handles.
+
+### Querys
+
+Queries are data extraction operations unrelated to commands, but they might consume the data they produce; by having this type of separation, the application data read source could be different than the one used to persist data through commands and event handlers; for example, we could store data in MYSQL with the command, but we could read it from elastic search through the query (after synchronizing both data sources). This separation of concerns (commands and queries) further enhances the segregation of concerns and by a consequence, SOLID principles.
+
+```c#
+[HttpGet]
+public IActionResult Index()
+{
+    var data = productConsumptionQuery.ExecuteQuery();
+    return Ok(data);
 }
 ```
 
