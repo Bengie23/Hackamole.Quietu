@@ -48,6 +48,28 @@ public class PrincipalAttemptedProductEventHandler : IMessageHandler<AuthorizedE
     }
 }
 ```
+Quietu API is triggering commands from its controllers; this helps to keep them clean and easy to understand.
+
+```c#
+[HttpPost]
+public IActionResult Post(AuthorizeDTO request)
+{
+    var command = new AuthorizeCommand();
+    command.CommandDate = DateTime.Now;
+    command.ProductCode = request.ProductCode;
+    command.PrincipalId = authenticatedPrincipalProvider.GetAuthenticatedPrincipalId();
+    try
+    {
+        authorizeCommandManager.Route(command);
+    }
+    catch (UnauthorizedAccessToProductException ex)
+    {
+        return Unauthorized(ex.Message);
+    }
+
+    return Ok("");
+}
+```
 
 ## Event handlers
 ### How to grow horizontally almost effortlessly
