@@ -70,3 +70,5 @@ public static void AddBusProvider(this IServiceCollection serviceCollection, ICo
     );
 }
 ```
+Every handler should implement the interface ```IMessageHandler<T>``` where ```T``` is the event type produced by the producer. (see 
+
